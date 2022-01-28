@@ -1,0 +1,330 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{wasysym}
+\usepackage{url}
+\usepackage{float} 
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usepackage[shortlabels]{enumitem}
+\usepackage{esint}
+\usepackage{multicol}
+\usepackage{todonotes}
+
+\newtheorem{definition}{Definição}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\res}{\mathrm{res}}
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{\textbf{Análise 2}\\ Lista 1/01}
+\author{Caio Tomás de Paula}
+\date{04/02/2022}
+\begin{document}
+
+\maketitle
+
+\paragraph{Exercício 1.} \href{https://analise2.talkyard.net/-18/exercicio-6-lista-101}{Link do post.}
+
+\paragraph{Exercício 2.} \href{https://analise2.talkyard.net/-20#post-2}{Link do post.}
+
+\paragraph{Exercício 3.} \href{https://analise2.talkyard.net/-16/limites-em-espacos-metricos}{Link do post.}
+
+\paragraph{Exercício 4.} As respectivas definições são
+\begin{enumerate}
+    \item Um \textit{espaço (vetorial) normado} é um par $(E, \|\cdot \|)$, sendo $E$ um espaço vetorial e $\|\cdot \|$ 
+    uma \textit{norma} definida em $E$, isto é, uma função de $E$ em $\mathbb{R}$ tal que
+    \begin{enumerate}
+        \item ela é não negativa: $\|x\| \geq 0, \forall x\in E$;
+        \item ela é não nula em vetores não nulos: $\|x\| = 0 \implies x = 0$;
+        \item dados $\alpha\in\mathbb{R}$ e $x\in E$, temos $\|\alpha x\| = |\alpha| \|x\|$;
+        \item vale a desigualdade triangular: $\|x+y\| \leq \|x\| + \|y\|, \forall x,y\in E$.
+    \end{enumerate}
+    
+    \item Um \textit{espaço métrico} é um par $(M, d)$, sendo $M$ um conjunto não-vazio e $d$ uma \textit{métrica}, isto é,
+    uma função de $M\times M \to \mathbb{R}$ tal que
+    \begin{enumerate}
+        \item $d(x,y) \geq 0, \forall x,y\in M$;
+        \item $d(x,y) = 0 \iff x = y$;
+        \item $d(x,y) = d(y,x), \forall x,y \in M$;
+        \item vale a desigualdade triangular: $d(x,y) \leq d(x,z) + d(z,y), \forall x,y,z\in M$.
+    \end{enumerate}
+    
+    \item Uma \textit{norma} em um espaço vetorial $E$ é um ``operador que pega um vetor [de $E$] e associa um número real maior 
+    ou igual a 0'' e tal que a distância (no sentido da métrica) entre dois vetores é dada pela norma da diferença entre eles.
+\end{enumerate}
+
+Vamos mostrar que as definições de norma são equivalentes.
+
+\begin{proof}
+Suponha que definimos norma como em 1. É evidente então que cada vetor é levado em um número real não nulo, 
+de modo que $d(a,b) := \|b-a\| \geq 0, \forall a,b\in E$. Ademais, $\|b-a\| = 0 \iff b- a = 0 \iff a = b$ 
+e também $\|b-a\| = |-1|\|a-b\| = \|a-b\|$. Por fim, note que
+\begin{equation*}
+    d(a,b) = \|b-a\| = \|b-c+c-a\| \leq \|b-c\| + \|c-a\| = d(a,c) + d(c,b),
+\end{equation*}
+ou seja, vale a desigualdade triangular para $d$. Logo, $d$ é uma métrica em $E$.
+
+Reciprocamente, se uma norma é definida como em 3, então ela automaticamente satisfaz as condições (a), (c) e (d) da definição 1, 
+restando mostrar apenas a validade de (b). Ora, mas isso segue do item (b) de 2.
+\end{proof}
+
+\paragraph{Exercício 5.} Um conjunto $F$ é dito \textit{sequencialmente fechado} se dada uma sequência qualquer
+$\{x_n\}_{n\in\mathbb{N}} \subseteq F$ que converge para $a$, então $a\in F$. Vamos mostrar que em um espaços normado/métrico $E$,
+ser sequencialmente fechado é equivalente a ter complementar aberto.
+
+\begin{proof}
+Suponha que o complementar $E\setminus F$ de $F$ é aberto e seja $a\in E\setminus F$. Por hipótese, existe uma bola $B$ centrada em
+$a$ inteiramente contida em $E\setminus F$. Suponha que $x_n$ é uma sequência de pontos de $F$ que converge para $a$. 
+Ora, então existe $N_{\varepsilon} \in \mathbb{N}$  tal que para todo $n\geq N_{\varepsilon}$ temos que $x_n$ está no 
+interior da bola de raio $\varepsilon$ e centro $a$, para todo $\varepsilon > 0$. Em particular, em algum momento $x_n$ entra em $B$,
+ou seja, sai de $F$, absurdo. Logo, não existe uma tal sequência e portanto todas as sequências de pontos em $F$, se convergirem,
+o fazem para pontos de $F$, i.e., $F$ é sequencialmente fechado.
+
+Reciprocamente, suponhamos $F$ sequencialmente fechado. Se $E\setminus F$ não for aberto, então existe um ponto $a$ nesse conjunto
+tal que toda bola centrada em $a$ tem interseção com $F$. Em particular, usando a família de bolas
+\begin{equation*}
+    \left\{ B_{1/n}(a), n\in\mathbb{N} \right\}
+\end{equation*}
+podemos definir uma sequência $x_n$ de pontos de $F$ (pois $B_{1/n}(a) \cap F \neq \varnothing, \forall n\in\mathbb{N}$), 
+com $x_n\in B_{1/n}(a)$, que converge para $a$. Então por hipótese $a\in F$, absurdo. Logo, $E\setminus F$ é aberto.
+\end{proof}
+
+\paragraph{Exercício 6.} Dizemos que uma função $f: E \to F$ entre espaços normados (métricos/topológicos) \textit{é contínua}
+em $a\in E$ se para toda bola $B$ centrada em $f(a)$ existe uma bola $D$ centrada em $a$ tal que $D \subseteq f^{-1}(B)$. Vamos
+mostrar a equivalência entre continuidade sequencial e continuidade para espaços normados/métricos.
+\begin{proof}
+($\Rightarrow$) Suponhamos $f$ contínua em $a\in E$. Seja $x_n$ uma sequência em $E$ que converge para $a$. Note que $f(x_n)$ 
+é uma sequência em $F$ Por hipótese, para cada bola $B$ centrada em $f(a)$ existe uma bola $D$ centrada em $a$ tal que 
+$f(D) \subset B$. Ora, então existe um $N\in\mathbb{N}$ tal que para todo $n\geq N$ temos $x_n \in D$, 
+o que implica $f(x_n) \in B$. Portanto, mostramos que $f(x_n)$ entra em toda bola centrada em $f(a)$, isto é, que
+$f(x_n) \to f(a)$ e, consequentemente, $f$ é sequencialmente contínua em $a$.
+
+($\Leftarrow$) Vamos mostrar, por contra-positiva, que se $f$ não é contínua em $a$, então $f$ não é sequencialmente contínua em $a$. 
+Ora, se $f$ não é contínua em $a$, então existe uma bola $B$ centrada em $f(a)$ tal que qualquer bola $D$ centrada em $a$ não está
+contida em $f^{-1}(B)$, isto é, $D\setminus f^{-1}(B) \neq\varnothing$ para toda bola $D$ centrada em $a$. 
+Ora, então consideremos a família das bolas $B_{1/n}(a), n\in\mathbb{N}$. Para cada $n$, 
+tome $x_n \in B_{1/n}(a)\setminus f^{-1}(B)$. É claro que $x_n \to a$, mas $f(x_n) \not\to f(a)$ pois $f(x_n)$ não entra na bola
+$B$ centrada em $a$. Portanto, $f$ não é sequencialmente contínua.
+\end{proof}
+
+\paragraph{Exercício 7.} Dizemos que uma função $f: E \to F$ entre espaços normados (métricos/topológicos) \textit{é contínua}
+em $a\in E$ se para toda bola $B$ centrada em $f(a)$ existe uma bola $D$ centrada em $a$ tal que $D \subseteq f^{-1}(B)$. Vamos
+mostrar que em espaços normados/métricos, $f$ é contínua todos os pontos de $E$ se, e só se, a imagem inversa de todo aberto de
+$F$ é um aberto de $E$.
+\begin{proof}
+($\Rightarrow$) Suponha $f$ contínua em $E$ e seja $A$ um aberto de $F$. Tome $a\in f^{-1}(A)$ qualquer. Temos então $f(a)\in A$ e,
+como $A$ é aberto, segue que existe uma bola $B$ centrada em $f(a)$ tal que $B\subseteq A$. Ora, então $f^{-1}(B) \subseteq f^{-1}(A)$
+e, pela continuidade de $f$, existe uma bola $D$ centrada em $a$ tal que $D \subseteq f^{-1}(B)$. Portanto, $D \subseteq f^{-1}(A)$,
+ou seja, $f^{-1}(A)$ é aberto em $E$.
+
+($\Leftarrow$) Reciprocamente, suponha que a imagem inversa de abertos são abertos, e tome $a\in E$ qualquer. 
+Ora, então para toda bola $B$ centrada em $f(a)$, temos $f^{-1}(B)$ aberto em $E$ e contendo $a$ (pois as bolas abertas são abertas). 
+Portanto, existe uma bola (aberta) $D$ centrada em $a$ tal que $D \subseteq f^{-1}(B)$, ou seja, $f$ é contínua em $E$.
+\end{proof}
+
+\paragraph{Exercício 8.} Vamos mostrar a unicidade dos limites em espaços métricos. 
+\begin{proof}
+Suponha $a\neq b$ e tome $0 < \varepsilon < d(a,b)/2$. Por hipótese, existe $N\in\mathbb{N}$ tal que 
+para todo $n\geq N$ temos $x_n \in B_{\varepsilon}(a)$ e $x_n\in B_{\varepsilon}(b)$. Ora, mas 
+$B_{\varepsilon}(a)\cap B_{\varepsilon}(b) = \varnothing$ pela escolha de $\varepsilon$, absurdo. Portanto, $a=b$.
+\end{proof}
+
+\paragraph{Exercício 9.}
+\begin{proof}
+Se $T$ é contínua, então a composta $\varphi\circ T$ é contínua para todo funcional linear $\varphi$ pois tais funcionais são
+todos contínuos.
+
+Reciprocamente, suponhamos que para todo funcional linear $\varphi: \mathbb{R}^q \to \mathbb{R}$ a composta $\varphi\circ T$ 
+é contínua. Ora, então a imagem inversa de todo aberto $A\subseteq\mathbb{R}$ é
+em um aberto $B\subseteq\mathbb{R}^p$, isto é,
+\begin{equation*}
+    (\varphi\circ T)^{-1}(A) = B \iff T^{-1}(\varphi^{-1}(A)) = B.
+\end{equation*}
+Mas $\varphi$ é contínua, de modo que $\varphi^{-1}(A)$ é um aberto de $\mathbb{R}^q$. Portanto,
+mostramos que a imagem inversa de abertos por $T$ é aberta, i.e., $T$ é contínua.
+\end{proof}
+
+\paragraph{Exercício 10.}
+\begin{proof}[Primeira maneira]
+    Uma primeira demonstração segue a ideia apresentada
+    \href{https://www.youtube.com/watch?v=ph3VUO0AVRA&list=PLMG2ETzS-iy95U-hwPhPRSGRHBFm8Dk2x&index=5}{em aula}: se $x_n \to a$, então
+    $x_n^i \to a^i$ para cada $i$ pois
+    \begin{equation*}
+        |x_n^i - a^i| \leq \|x_n - a\|_{\infty} \to 0.
+    \end{equation*}
+    Reciprocamente, suponha que $x_n^i \to a^i$ para cada $i$. Fixado $j$ entre 1 e $p$, sabemos que para todo $\varepsilon$ existe
+    $N_j\in\mathbb{N}$ tal que $n\geq N_j \implies |x_n^j - a^j| < \varepsilon$. Tome $N = \max\{N_1, \dots, N_p\}$. Temos que
+    para $n\geq N$, $|x_n^i - a^i| < \varepsilon$ para todo $i$, ou seja, $\|x_n - a\|_{\infty} < \varepsilon$ e, portanto, 
+    $x_n \to a$.
+\end{proof}
+
+\begin{proof}[Segunda maneira]
+    Suponha que $x_n \to a$. Como as projeções $\pi_j$ em cada coordenada são contínuas,
+    segue do Exercício 6 que $\pi_j(x_n) = x_n^j \to a^j = \pi_j(a), \forall j$. 
+    
+    Reciprocamente, suponhamos que $x_n^j \to a^j$ para cada $j$. Então, por hipótese, dado $\varepsilon > 0$ existe
+    $N^j\in\mathbb{N}$ tal que para todo $n\geq N^j$ temos $x_n^j \in B_{\varepsilon}^j(a^j)$. 
+    Sejam $N = \max_{1\leq j\leq p}\{N^j\}$ e
+    \begin{equation*}
+        A = \bigcap_{j=1}^p \pi_j^{-1}(B_{\varepsilon}^j(a^j)).
+    \end{equation*}
+    Como as projeções são contínuas e interseção finita de abertos é aberta, segue que $A$ é um aberto de $\mathbb{R}^p$.
+    Ora, mas $a\in A$ pela definição de $A$ e também $x_n \in A$ para todo $n\geq N$. Logo, $x_n$ entra em toda vizinhança
+    de $a$ e, portanto, $x_n \to a$.
+\end{proof}
+
+\paragraph{Exercício 11.}
+\begin{proof}
+Sem perda de generalidade, suponhamos que $E$ é completo em $\|\cdot \|_1$ e seja $x_n$ uma sequência de Cauchy em $E$, 
+que converge para um ponto $a\in E$ na norma $\|\cdot \|_1$ por hipótese. Dito de outro modo, $\|x_n-a\|_1 \to 0$. 
+Ora, mas como as normas são equivalentes, temos também que $M\|x_n - a\|_2 \leq \|x_n - a\|_1$ para algum $M$ positivo. 
+Portanto, devemos ter $\|x_n-a\|_2 \to 0$, ou seja, $x_n$ converge (para $a$) na norma $\|\cdot \|_2$ e $E$ é completo nesta norma
+também.
+\end{proof}
+
+\paragraph{Exercício 12.}
+\begin{proof}
+(1 $\implies$ 2) Se $x_n \xrightarrow{1} x$, então $0 \leq a\|x_n - x\|_2 \leq \|x_n - x\|_1 \to 0$, ou seja, $\|x_n - x\|_2 \to 0$ 
+e $x_n \xrightarrow{2} x$. Reciprocamente, se $x_n \xrightarrow{2} x$, então $0 \leq (1/b)\|x_n - x\|_1 \leq \|x_n - x\|_2 \to 0$, 
+ou seja, $\|x_n - x\|_1 \to 0$ e $x_n \xrightarrow{1} x$.
+
+(2 $\implies$ 1) Note que $x_n \xrightarrow{1} x \iff x_n \xrightarrow{2} x$ implica que
+\begin{equation*}
+    \|x_n - x\|_1 \to 0 \iff \|x_n - x\|_2 \to 0,
+\end{equation*}
+ou seja, existem constantes positivas $a,b$ tais que $a\|x_n - x\|_2 \leq \|x_n - x\|_1$ e $b\|x_n - x\|_1 \leq \|x_n - x\|_2$. 
+Portanto,
+\begin{equation*}
+    a\|\cdot \|_2 \leq \|\cdot \|_1 \leq (1/b)\|\cdot \|_2.
+\end{equation*}
+\end{proof}
+
+\paragraph{Exercício 13.}\todo{revisar recíproca}
+\begin{proof}
+(1 $\implies$ 2) Se $A$ é aberto em $\|\cdot \|_1$, então para todo $a\in A$ existe uma bola $B^1(a)\subseteq A$ na norma 
+$\|\cdot\|_1$ centrada em $a$ e inteiramente contida em $A$. Ora, mas por hipótese existe uma bola $B^2(a)$ 
+na norma $\|\cdot\|_2$ centrada em $a$ e contida em $B^1(a)$, de modo que $A$ é aberto na norma $\|\cdot\|_2$. 
+A volta é análoga, basta trocar $1 \leftrightarrow 2$.
+
+(2 $\implies$ 1) Suponhamos que um conjunto é aberto na norma 1 se, e somente se, é aberto na norma 2. Sem perda de
+generalidade, vamos considerar bolas centradas na origem. Seja $B_1^1(0)$ uma bola (aberta) na norma 1. Por hipótese,
+existe uma bola (aberta) $B_1^2(0)$ na norma 2 inteiramente contida na primeira bola e, novamente por hipótese, existe
+uma outra bola (aberta) $B_2^1(0)$ na norma 1 inteiramente contida na bola anterior. Dito de outro modo, temos
+\begin{equation*}
+    B_2^1(0) \subseteq B_1^2(0) \subseteq B_1^1(0).
+\end{equation*}
+Daí, segue o item 1.
+\end{proof}
+
+\paragraph{Exercício 14.}
+\begin{proof}
+Vamos mostrar que $X = (0,1]$ é incompleto com a métrica usual $d_1(x,y) = |x-y|$ mas completo com a métrica $d_2$. Intuitivamente,
+isso se deve ao fato de que se $x_n$ é uma sequência de Cauchy em $X$ que converge para $x$, então com $d_1$ podemos ter
+$x=0\notin X$, tornando $X$ incompleto, enquanto que com $d_2$ os candidatos a limites de $x_n$ são da forma $1/y$ com $y\in (0,1]$, ou seja, não nulos.
+
+Para mostrar que $(X, d_1)$ é incompleto, seja $x_n = 1/2^n$. Note que $x_n$ é uma sequência em $X$ e que, evidentemente, vai 
+a $0$. Vamos mostrar que ela é de Cauchy. Dado $\varepsilon > 0$, tome $N\in\mathbb{N}$ tal que $2^{-N} < \varepsilon$. Então, para todo $n,m > N$, segue que
+\begin{align*}
+    |x_m - x_n| = \left| \frac{1}{2^m} - \frac{1}{2^n} \right| \leq \frac{1}{2^m} + \frac{1}{2^n} < \frac{1}{2^N} + \frac{1}{2^N} 
+    \leq \varepsilon
+\end{align*}
+e, portanto, $x_n$ é de Cauchy, com limite $0\notin X$, de modo que $(X, d_1)$ é incompleto.
+
+No caso de $(X, d_2)$ a coisa muda de figura. Seja $x_n$ uma sequência de Cauchy em $X$ que converge para $x\in [0,1]$. Ora, então
+$d_2(x_n,x) \to 0$, ou seja,
+\begin{equation*}
+    \left| \frac{1}{x_n} - \frac{1}{x} \right| \to 0.
+\end{equation*}
+Portanto, não podemos ter $x=0$, de modo que 
+\todo{Essa frase tá errada, trocar}
+(toda sequência de Cauchy converge para um ponto de $X$.)
+\end{proof}
+
+\paragraph{Exercício 15.}
+
+\paragraph{Exercício 16.}
+\begin{proof}
+Vimos \href{https://www.youtube.com/watch?v=wszq-PtjOk4&list=PLMG2ETzS-iy95U-hwPhPRSGRHBFm8Dk2x&index=7}{em aula} que em espaços
+vetoriais de dimensão finita, todas as normas são equivalentes. Do Exercício 12, sabemos que duas normas serem equivalentes é o
+mesmo que dizer que sequências que convergem em uma, convergem na outra (para o mesmo ponto). 
+Portanto, o resultado que vamos provar independe da norma. Vamos então à demonstração de fato.
+
+Vimos também \href{https://www.youtube.com/watch?v=ph3VUO0AVRA&list=PLMG2ETzS-iy95U-hwPhPRSGRHBFm8Dk2x&index=5}{em aula} que
+a convergência de um vetor de $E$ é equivalente à convergência coordenada a coordenada. Portanto,
+\begin{equation*}
+    \vec{v}_n \to \vec{v} \iff v_n^i \to v^i, \forall i = 1, 2, \dots, \dim E.
+\end{equation*}
+Fixado $\vec{b}_j$, temos que o produto interno $\vec{v}_n\cdot\vec{b}_j$ é uma função linear
+$\langle \cdot, \vec{b}_j \rangle: \mathbb{R}^{\dim E} \to \mathbb{R}$ para cada $j$ (pois o produto interno é bilinear). Logo, 
+pelo que vimos \href{https://www.youtube.com/watch?v=ph3VUO0AVRA&list=PLMG2ETzS-iy95U-hwPhPRSGRHBFm8Dk2x&index=5}{em aula},
+obtemos a primeira implicação: 
+\begin{equation*}
+\vec{v}_n \to \vec{v} \implies \vec{v}_n\cdot \vec{b}_j \to \vec{v}\cdot\vec{b}_j.
+\end{equation*}
+Para a volta, basta notar que estamos em $\mathbb{R}$ quando fazemos o produto interno e usar o ferramental que possuímos de lá.
+Dizer que $\vec{v}_n\cdot \vec{b}_j \to \vec{v}\cdot\vec{b}_j$ equivale a dizer que
+\begin{equation*}
+    \sum_{i=1}^r v_n^i b_j^i \to \sum_{i=1}^r v^i b_j^i
+\end{equation*}
+para cada $j$, sendo $r = \dim E$. Ora, mas então estamos dizendo que a norma da diferença das somas vai a 0, isto é
+\begin{align*}
+    \left|\sum_{i=1}^r v_n^i b_j^i -\sum_{i=1}^r v^i b_j^i\right| \to 0 &\iff \left| \sum_{i=1}^r (v_n^i - v^i) b_j^i \right| \to 0.
+\end{align*}
+para cada $j$. Note que, fixado $j$,
+\begin{align*}
+    0 \leftarrow \left| \sum_{i=1}^r (v_n^i - v^i) b_j^i \right| &\geq \left| r\min_{1\leq i\leq r}\{(v_n^i - v^i) b_j^i\} \right| \\
+    &= r \left| \min_{1\leq i\leq r}\{(v_n^i - v^i) b_j^i\} \right|.
+\end{align*}
+Portanto, $(v_n^i - v^i)b_j^i \to 0$ para cada $i$, ou seja, $\vec{v}_n \to \vec{v}$. Como $j$ é qualquer, segue que vale 
+para todos os elementos da base e está provado o resultado.
+\end{proof}
+
+\end{document}
