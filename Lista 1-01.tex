@@ -225,9 +225,14 @@ mostramos que a imagem inversa de abertos por $T$ é aberta, i.e., $T$ é contí
 \begin{proof}
 Sem perda de generalidade, suponhamos que $E$ é completo em $\|\cdot \|_1$ e seja $x_n$ uma sequência de Cauchy em $E$, 
 que converge para um ponto $a\in E$ na norma $\|\cdot \|_1$ por hipótese. Dito de outro modo, $\|x_n-a\|_1 \to 0$. 
-Ora, mas como as normas são equivalentes, temos também que $M\|x_n - a\|_2 \leq \|x_n - a\|_1$ para algum $M$ positivo. 
-Portanto, devemos ter $\|x_n-a\|_2 \to 0$, ou seja, $x_n$ converge (para $a$) na norma $\|\cdot \|_2$ e $E$ é completo nesta norma
-também.
+Como as normas são equivalentes, existe $M$ real positivo tal que $M\|\cdot\|_2 \leq \|\cdot\|_1$.
+
+Para mostrar que $x_n$ é de Cauchy na norma $\|\cdot\|_2$, seja $\varepsilon > 0$ qualquer. Por hipótese, existe
+$N\in\mathbb{N}$ tal que para todo $m,n > N$ temos $\|x_m - x_n\|_1 < M\varepsilon$. Ora, então para todo $m,n > N$
+temos $\|x_m - x_n\|_2 < \varepsilon$, isto é, $x_n$ é de Cauchy na norma $\|\cdot\|_2$.
+
+Para mostrar que $x_n$ converge para $a$ em $\|\cdot\|_2$, basta notar que $M\|x_n - a\|_2 \leq \|x_n - a\|_1 \to a$ 
+implica que $\|x_n - a\|_2 \to 0$. 
 \end{proof}
 
 \paragraph{Exercício 12.}
