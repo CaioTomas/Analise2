@@ -283,15 +283,22 @@ a $0$. Vamos mostrar que ela é de Cauchy. Dado $\varepsilon > 0$, tome $N\in\ma
 \end{align*}
 e, portanto, $x_n$ é de Cauchy, com limite $0\notin X$, de modo que $(X, d_1)$ é incompleto.
 
-No caso de $(X, d_2)$ a coisa muda de figura. Seja $x_n$ uma sequência de Cauchy em $X$ que converge 
-para algum $x\in \mathbb{R}$ (tal $x$ existe pois $\mathbb{R}$ é completo. Ora, então
-$d_2(x_n,x) \to 0$, ou seja,
-\begin{equation*}
-    \left| \frac{1}{x_n} - \frac{1}{x} \right| \to 0.
-\end{equation*}
-Portanto, não podemos ter $x=0$, de modo que 
-\todo{Essa frase tá errada, trocar}
-(toda sequência de Cauchy converge para um ponto de $X$.)
+No caso de $(X, d_2)$ a coisa muda de figura. Para mostrar que $(0,1]$ é completo, vamos precisar de um resultado preliminar:
+subconjuntos fechados de espaços métricos completos são completos também.
+
+Para ver isso, seja $w_n$ uma sequência de Cauchy em um subconjunto fechado $F$ de um espaço métrico completo $W$. 
+Como $w_n$ está em $W$, segue que $w_n \to w$ para algum $w\in W$. Ora, mas como $F$ é fechado, segue que $w\in F$
+(pois, em espaços métricos, sequencialmente fechado $\iff$ fechado), ou seja $w_n$ converge para um ponto de $F$. 
+Logo, $F$ é completo.
+
+Isto posto, considere a bijeção
+\begin{align*}
+    f: [1, \infty) &\to (0,1]
+    \\
+    x&\mapsto \frac{1}{x}.
+\end{align*}
+Note que $\mathbb{R}\setminus [1, \infty) = (-\infty, 1)$ é aberto, ou seja, $[1, \infty)$ é fechado. Logo, como
+$\mathbb{R}$ é completo na métrica usual, segue que $[1, \infty)$ também o é.
 \end{proof}
 
 \paragraph{Exercício 15.}
