@@ -252,7 +252,7 @@ Portanto,
 \end{equation*}
 \end{proof}
 
-\paragraph{Exercício 13.}\todo{revisar recíproca}
+\paragraph{Exercício 13.}
 \begin{proof}
 (1 $\implies$ 2) Se $A$ é aberto em $\|\cdot \|_1$, então para todo $a\in A$ existe uma bola $B^1(a)\subseteq A$ na norma 
 $\|\cdot\|_1$ centrada em $a$ e inteiramente contida em $A$. Ora, mas por hipótese existe uma bola $B^2(a)$ 
@@ -283,7 +283,8 @@ a $0$. Vamos mostrar que ela é de Cauchy. Dado $\varepsilon > 0$, tome $N\in\ma
 \end{align*}
 e, portanto, $x_n$ é de Cauchy, com limite $0\notin X$, de modo que $(X, d_1)$ é incompleto.
 
-No caso de $(X, d_2)$ a coisa muda de figura. Seja $x_n$ uma sequência de Cauchy em $X$ que converge para $x\in [0,1]$. Ora, então
+No caso de $(X, d_2)$ a coisa muda de figura. Seja $x_n$ uma sequência de Cauchy em $X$ que converge 
+para algum $x\in \mathbb{R}$ (tal $x$ existe pois $\mathbb{R}$ é completo. Ora, então
 $d_2(x_n,x) \to 0$, ou seja,
 \begin{equation*}
     \left| \frac{1}{x_n} - \frac{1}{x} \right| \to 0.
@@ -294,6 +295,25 @@ Portanto, não podemos ter $x=0$, de modo que
 \end{proof}
 
 \paragraph{Exercício 15.}
+\begin{proof}
+Considere $\mathcal{L}(E:F)$ com a norma
+\begin{equation*}
+    \|T\| = \inf\left\{ M \in \mathbb{R} : \|Tv\| \leq M\cdot\|v\|, \forall v \in E \right\}.
+\end{equation*}
+Vimos \href{https://www.youtube.com/watch?v=Jl1BRX26g8g}{em aula} que 
+\begin{equation*}
+    \|T\| = \sup_{x\neq 0} \frac{\|Tx\|}{\|x\|},
+\end{equation*}
+de modo que
+\begin{equation*}
+    \|T_n - T\| = \sup_{x\neq 0} \frac{\|(T_n - T)x\|}{\|x\|} = \sup_{x\neq 0} \frac{\|T_n(x) - T(x)\|}{\|x\|},
+\end{equation*}
+donde segue que
+\begin{equation*}
+    T_n \to T \iff T_n(x) \to T(x), \forall x\in E
+\end{equation*}
+pelas propriedades do supremo.
+\end{proof}
 
 \paragraph{Exercício 16.}
 \begin{proof}
