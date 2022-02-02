@@ -344,22 +344,37 @@ obtemos a primeira implicação:
 \begin{equation*}
 \vec{v}_n \to \vec{v} \implies \vec{v}_n\cdot \vec{b}_j \to \vec{v}\cdot\vec{b}_j.
 \end{equation*}
-Para a volta, basta notar que estamos em $\mathbb{R}$ quando fazemos o produto interno e usar o ferramental que possuímos de lá.
-Dizer que $\vec{v}_n\cdot \vec{b}_j \to \vec{v}\cdot\vec{b}_j$ equivale a dizer que
+
+Para a volta, podemos considerar uma mudança de base em $E$ de 
+$\{b_1, \dots, b_p\}$ para $\{e_1, \dots, e_p\}$, a base canônica.
+Essa mudança de base é contínua com inversa contínua por ser linear,
+logo é um homeomorfismo. 
+
+Assim, considerando a base canônica, o produto interno $\vec{v}\cdot e_i$
+é exatamente a $i$-ésima coordenada de $\vec{v}$, de modo que dizer
 \begin{equation*}
-    \sum_{i=1}^r v_n^i b_j^i \to \sum_{i=1}^r v^i b_j^i
+    \vec{v}_n\cdot e_j \to \vec{v}\cdot e_j \implies \vec{v}_n \to \vec{v}
 \end{equation*}
-para cada $j$, sendo $r = \dim E$. Ora, mas então estamos dizendo que a norma da diferença das somas vai a 0, isto é
-\begin{align*}
-    \left|\sum_{i=1}^r v_n^i b_j^i -\sum_{i=1}^r v^i b_j^i\right| \to 0 &\iff \left| \sum_{i=1}^r (v_n^i - v^i) b_j^i \right| \to 0.
-\end{align*}
-para cada $j$. Note que, fixado $j$,
-\begin{align*}
-    0 \leftarrow \left| \sum_{i=1}^r (v_n^i - v^i) b_j^i \right| &\geq \left| r\min_{1\leq i\leq r}\{(v_n^i - v^i) b_j^i\} \right| \\
-    &= r \left| \min_{1\leq i\leq r}\{(v_n^i - v^i) b_j^i\} \right|.
-\end{align*}
-Portanto, $(v_n^i - v^i)b_j^i \to 0$ para cada $i$, ou seja, $\vec{v}_n \to \vec{v}$. Como $j$ é qualquer, segue que vale 
-para todos os elementos da base e está provado o resultado.
+é o mesmo que dizer que se cada coordenada de $\vec{v}_n$ converge para
+a coordenada respectiva de $\vec{v}$, então $\vec{v}_n\to\vec{v}$, o que
+é verdade pelo que vimos no Exercício 10.
+
+% Para a volta, basta notar que estamos em $\mathbb{R}$ quando fazemos o produto interno e usar o ferramental que possuímos de lá.
+% Dizer que $\vec{v}_n\cdot \vec{b}_j \to \vec{v}\cdot\vec{b}_j$ equivale a dizer que
+% \begin{equation*}
+%     \sum_{i=1}^r v_n^i b_j^i \to \sum_{i=1}^r v^i b_j^i
+% \end{equation*}
+% para cada $j$, sendo $r = \dim E$. Ora, mas então estamos dizendo que a norma da diferença das somas vai a 0, isto é
+% \begin{align*}
+%     \left|\sum_{i=1}^r v_n^i b_j^i -\sum_{i=1}^r v^i b_j^i\right| \to 0 &\iff \left| \sum_{i=1}^r (v_n^i - v^i) b_j^i \right| \to 0.
+% \end{align*}
+% para cada $j$. Note que, fixado $j$,
+% \begin{align*}
+%     0 \leftarrow \left| \sum_{i=1}^r (v_n^i - v^i) b_j^i \right| &\geq \left| r\min_{1\leq i\leq r}\{(v_n^i - v^i) b_j^i\} \right| \\
+%     &= r \left| \min_{1\leq i\leq r}\{(v_n^i - v^i) b_j^i\} \right|.
+% \end{align*}
+% Portanto, $(v_n^i - v^i)b_j^i \to 0$ para cada $i$, ou seja, $\vec{v}_n \to \vec{v}$. Como $j$ é qualquer, segue que vale 
+% para todos os elementos da base e está provado o resultado.
 \end{proof}
 
 \end{document}
