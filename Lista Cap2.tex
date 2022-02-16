@@ -59,6 +59,17 @@
 
 \DeclareMathOperator{\rot}{rot}
 \DeclareMathOperator{\diverg}{div}
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
 
 \graphicspath{{img/}}
 
@@ -94,7 +105,7 @@
             \end{equation*}
             %
             que é um infinitésimo (basta estimar a norma como fizemos num exercício parecido do Capítulo 1).
-            Logo, $f$ é diferenciável em $\mathbb{R}^3$. A sua matriz jacobiana é
+            Logo, $f$ é diferenciável em $\R^3$. A sua matriz jacobiana é
             %
             \begin{equation*}
                 [Df(x,y,z)] = 
@@ -149,7 +160,7 @@
         \end{align*}
         %
         de modo que a imagem de $f'(0,0,z)$ é o conjunto dos vetores da forma 
-        $\displaystyle{ \begin{bmatrix} 0 \\ 0 \\ t \\ t \end{bmatrix}, t\in\mathbb{R} }$.
+        $\displaystyle{ \begin{bmatrix} 0 \\ 0 \\ t \\ t \end{bmatrix}, t\in\R }$.
     \end{enumerate}
 %
 \paragraph{Exercício 2.}
@@ -168,34 +179,230 @@
     %
     sendo $A_{\pi/6}$ a matriz de rotação por $\pi/6$ radianos em torno da origem. Daí, temos que $[T^{100}]$
     é a matriz de rotação por $100\pi/6 \equiv 4\pi/6 = 2\pi/3$ radianos em torno da origem e $[T^{101}]$ é
-    a matriz de rotação por $5\pi/6$ radianos em torno da origem. Portanto,
+    a matriz de rotação por $5\pi/6$ radianos em torno da origem. Portanto, o ângulo entre $T^{100}\cdot h$ 
+    e $T^{101}\cdot k$ é
     %
     \begin{align*}
-        T^{100}\cdot h = (\cos(2\pi/3), \sin(2\pi/3))
+        \frac{\pi}{4} + \frac{5\pi}{6} - \frac{2\pi}{3} = \frac{13\pi}{12} - \frac{2\pi}{3} = \frac{5\pi}{12}.
     \end{align*}
     %
-%
 \paragraph{Exercício 3.}
     a
 %
 \paragraph{Exercício 4.}
-    a
-%
+    %
+    \begin{proof}
+        Sabemos que
+        %
+        \begin{align*}
+            [f'(x,y)] = 
+            \begin{bmatrix}
+                2x & 0 \\
+                0 & 2y \\
+                2(x+y) & 2(x+y)
+            \end{bmatrix}.
+        \end{align*}
+        %
+        Daí,
+        %
+        \begin{align*}
+            [f'(x,y)]\cdot\vec{e}_1 &= 
+            \begin{bmatrix}
+                2x \\ 
+                0 \\
+                2(x+y)
+            \end{bmatrix} \\
+            [f'(x,y)]\cdot\vec{e}_2 = 
+            \begin{bmatrix}
+                0 \\ 
+                2y \\
+                2(x+y)
+            \end{bmatrix}.
+        \end{align*}
+        %
+        Portanto, se $a[f'(x,y)]\cdot\vec{e}_1 + b[f'(x,y)]\cdot\vec{e}_2 = \mathbf{0}$, então
+        %
+        \begin{align*}
+            \begin{bmatrix}
+                0 \\
+                0 \\
+                0
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                2ax \\
+                2by \\
+                2(x+y)(a+b)
+            \end{bmatrix}
+        \end{align*}
+        %
+        que ocorre (considerando $x,y\neq 0$) se, e somente se $a=0=b$; logo, $f'(x,y)$ tem posto 2.
+    \end{proof}
+    %
 \paragraph{Exercício 5.}
-    a
-%
+    %
+    \begin{proof}
+        Temos que
+        %
+        \begin{equation*}
+            f'(x,y,z) =
+            \begin{bmatrix}
+                1 & 1 & 1 \\
+                2x & 2y & 2z \\
+                3x^2 & 3y^2 & 3z^2
+            \end{bmatrix}.
+        \end{equation*}
+        %
+        Daí,
+        %
+        \begin{align*}
+            \det([f'(x,y,z)]) = 0 &\iff 6yz^2 + 6zx^2 + 6xy^2 - 6yx^2 - 6xz^2 - 6zy^2 = 0 \\
+                                  &\iff y(z^2 - x^2) + z(x^2 - y^2) + x(y^2 - z^2) = 0 \\
+                                  &\iff (x = y) \lor (x = z) \lor (y = z).
+        \end{align*}
+        %
+        Portanto, $f'(x,y,z)$ é invertível salvo se duas das coordenadas forem iguais.
+    \end{proof}
+    %
 \paragraph{Exercício 6.}
-    a
-%
+    %
+    \begin{proof}
+        Temos que
+        %
+        \begin{align*}
+            [f'(x,y)] =
+            \begin{bmatrix}
+                e^x & e^y \\
+                e^x & -e^y
+            \end{bmatrix}.
+        \end{align*}
+        %
+        Como $\det([f'(x,y)]) = -2e^{x+y} \neq 0, \forall (x,y)\in\R^2$, segue que $f'(x,y)$ é invertível
+        para todo ponto do plano.
+    \end{proof}
+    %
+    Pensando $f:\C\to\C$, temos que
+    %
+    \begin{align*}
+        f(x+iy) = (e^x + e^y) + i(e^x - e^y) = u(x,y) + iv(x,y).   
+    \end{align*}
+    %
+    Note que
+    %
+    \begin{align*}
+        \frac{\partial u}{\partial x} = e^x &\neq -e^y = \frac{\partial v}{\partial y} \\
+        \frac{\partial u}{\partial y} = e^y &\neq -e^x = -\frac{\partial v}{\partial x},
+    \end{align*}
+    %
+    de modo que $f$, vista como função complexa, não é holomorfa, pois não satisfaz as condições de 
+    Cauchy-Riemann.
 \paragraph{Exercício 7.}
-    a
-%
+    %
+    \begin{proof}
+        Dado $H\in E$, temos que
+        %
+        \begin{align*}
+            f(X+H) &= (X+H)(X+H)^* \\
+                   &= (X+H)(X^* + H^*) \\
+                   &= f(X) + XH^* + HX^* + \rho(H),
+        \end{align*}
+        %
+        sendo $\rho(H) = HH^*$. Ora, como $\rho(H)/H \xrightarrow{H\to 0} 0$, então $f'(X)\cdot H = XH^* + HX^*$.
+        Note que
+        %
+        \begin{equation*}
+            (f'(X)\cdot H)^* = (XH^* + HX^*)^* = (XH^*)^* + (HX^*)^* = HX^* + XH^* = f'(X)\cdot H,
+        \end{equation*}
+        %
+        ou seja, $f'(X)\cdot H$ é simétrica para todo $H\in E$. Ademais, se $X$ é ortogonal, 
+    \end{proof}
+    %
 \paragraph{Exercício 8.}
 %
     \begin{enumerate}[a)]
         \item 
         %
+        \begin{proof}
+            Analogamente ao caso de uma transformação linear, temos que $\exists M\in\R$ tal que
+            %
+            \begin{equation*}
+                f(a_1, \dots, a_p) \leq M\|a_1\|\cdots\|a_p\|.
+            \end{equation*}
+            %
+            Daí,
+            %
+            \begin{align*}
+                f(a_1 + v_1, \dots, a_p + v_p) &= f(a_1, a_2,\dots, a_p) 
+                                               + f(v_1,a_2, \dots, a_p) 
+                                               + \cdots 
+                                               + f(a_1, a_2, \dots, v_p) \\
+                                               &+ \underbrace{f(v_1, v_2, a_3, \dots, a_p) 
+                                               + \cdots 
+                                               + f(a_1, a_2\dots, a_{n-2}, v_{n-1}, v_n)}_{\text{infinitésimo}},
+            \end{align*}
+            %
+            em que o fato do termo destacado ser um infinitésimo segue do fato de que cada uma das parcelas,
+            dividida por $\|(v_1, \dots, v_p)\|_{\infty}$, é menor ou igual a
+            %
+            \begin{equation*}
+                M\frac{\|a_3\|\cdots\|a_p\|\|v\|^2_{\infty}}{\|v\|_{\infty}} \xrightarrow{v\to 0} 0
+            \end{equation*}
+            %
+            Logo, 
+            %
+            \begin{equation*}
+                f'(a_1, \dots, a_p)\cdot (v_1, \dots, v_p) = f(v_1, a_2, \dots, a_p) 
+                                                           + \cdots 
+                                                           + f(a_1, a_2, \dots, v_p).
+            \end{equation*}
+            %
+        \end{proof}
+        %
         \item
+        %
+        \begin{proof}
+            Ora, o determinante é uma função $n$-linear. Logo, 
+            %
+            \begin{align*}
+                f'(X)\cdot H &= 
+                \det\begin{bmatrix}
+                        h_{11} & x_{12} & \cdots & x_{1n} \\
+                        h_{21} & x_{22} & \cdots & x_{1n} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        h_{n1} & x_{n2} & \cdots & x_{nn} \\
+                    \end{bmatrix}
+                    + \cdots + 
+                \det\begin{bmatrix}
+                        x_{11} & x_{12} & \cdots & h_{1n} \\
+                        x_{21} & x_{22} & \cdots & h_{2n} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        x_{n1} & x_{n2} & \cdots & h_{nn} \\
+                    \end{bmatrix}.
+            \end{align*}
+            %
+            Daí, segue que
+            %
+            \begin{align*}
+                f'(I)\cdot H 
+                &= 
+                \det\begin{bmatrix}
+                        h_{11} & 0 & \cdots & 0 \\
+                        h_{21} & 1 & \cdots & 0 \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        h_{n1} & 0 & \cdots & 1 \\
+                    \end{bmatrix}
+                    + \cdots + 
+                \det\begin{bmatrix}
+                        1 & 0 & \cdots & h_{1n} \\
+                        0 & 1 & \cdots & h_{2n} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        0 & 0 & \cdots & h_{nn} \\
+                    \end{bmatrix} \\
+                &= h_{11} + \cdots + h_{nn} \\
+                &= \tr(H).
+            \end{align*}
+            %
+        \end{proof}
         %
         \item 
     \end{enumerate}
