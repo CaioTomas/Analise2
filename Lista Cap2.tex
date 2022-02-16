@@ -187,8 +187,40 @@
     \end{align*}
     %
 \paragraph{Exercício 3.}
-    a
-%
+    %
+    \begin{proof}
+        Usando que $f$ é diferenciável em $U$, temos que
+        %
+        \begin{align*}
+            \varphi(x+h) &= (x+h, f(x+h)) \\
+                         &= (x+h, f(x) + f'(x)\cdot h + \rho_f(h)) \\
+                         &= \varphi(x) + (h, f'(x)\cdot h) + \rho_{\varphi}(h),
+        \end{align*}
+        %
+        sendo $\rho_{\varphi}(h) = (0, \varphi_f(h))$ tal que 
+        $\rho_{\varphi}(h)/\|h\| \xrightarrow{h\to \vec{0}} \vec{0}$ pois
+        $\rho_f(h)/\|h\| \xrightarrow{h\to \vec{0}} 0$.
+        Portanto, $\varphi$ é diferenciável e $\varphi'(x)\cdot h = (h, f'(x)\cdot h)$.
+        Segue da expressão da derivada que $\varphi'$ é injetiva: de fato, dado $x\in U$,
+        %
+        \begin{equation*}
+            \varphi'(x)\cdot h_1 = \varphi'(x)\cdot h_2 
+            \implies (h_1, f'(x)\cdot h_1) = (h_2, f'(x)\cdot h_2)
+            \implies h_1 = h_2.
+        \end{equation*}
+        %
+        Agora para $F(x,y)$. Dado $(u,v)\in U\times\R^n$, temos
+        %
+        \begin{align*}
+            F(x+u, y+v) &= f(x+u) - y - v \\
+                        &= F(x,y) + f'(x)\cdot u - v + \rho_f(u).
+        \end{align*}
+        %
+        Como $\rho_f(u)/\|h\| \xrightarrow{h\to\vec{0}} 0$, segue que $F'(x,y)\cdot (u,v) = f'(x)\cdot u - v$.
+        Daí, o núcleo de $F'(x,y)$ são os $(u,v)$ tais que $v = f'(x)\cdot u$, ou seja, da forma
+        $(u, f'(x)\cdot u)$, precisamente $\varphi'(U)$.
+    \end{proof}
+    %
 \paragraph{Exercício 4.}
     %
     \begin{proof}
@@ -296,7 +328,8 @@
     %
     de modo que $f$, vista como função complexa, não é holomorfa, pois não satisfaz as condições de 
     Cauchy-Riemann.
-\paragraph{Exercício 7.}
+    %
+\paragraph{Exercício 7.}\todo{terminar}
     %
     \begin{proof}
         Dado $H\in E$, temos que
@@ -317,7 +350,7 @@
         ou seja, $f'(X)\cdot H$ é simétrica para todo $H\in E$. Ademais, se $X$ é ortogonal, 
     \end{proof}
     %
-\paragraph{Exercício 8.}
+\paragraph{Exercício 8.}\todo{terminar}
 %
     \begin{enumerate}[a)]
         \item 
@@ -407,10 +440,10 @@
         \item 
     \end{enumerate}
 %
-\paragraph{Exercício 9.}
+\paragraph{Exercício 9.}\todo{fazer}
     a
 %
-\paragraph{Exercício 10.}
+\paragraph{Exercício 10.}\todo{fazer}
     a
 %
 \end{document}
