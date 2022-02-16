@@ -115,7 +115,89 @@
     \end{enumerate}
 %
 \paragraph{Exercício 2.}
-    a
+%
+    \begin{enumerate}[a)]
+        \item 
+        %
+        \begin{proof}
+            Temos que
+            %
+            \begin{align*}
+                f(x+\Delta x, y+\Delta y) &= (x^2 + 2x\Delta x + \Delta x^2 + y + \Delta y,
+                                                x + \Delta x + y^2 + 2y\Delta y + \Delta y^2) \\
+                                          &= f(x,y) + (2x\Delta x + \Delta y, \Delta x + 2y\Delta y)
+                                          + (\Delta x^2, \Delta y^2) \\
+                                          &= f(x,y)+f'(x)\cdot (\Delta x, \Delta y)+\rho(\Delta x, \Delta y),
+            \end{align*}
+            %
+            sendo $f'(x) = \begin{bmatrix} 2x & 1 \\ 1 & 2y \end{bmatrix}$ a candidato a derivada. Ora, mas
+            %
+            \begin{equation*}
+                \frac{\rho(\Delta x, \Delta y)}{\|(\Delta x, \Delta y)\|} 
+                \xrightarrow{(\Delta x, \Delta y)\to\vec{0}} \vec{0}
+            \end{equation*}
+            %
+            pois
+            %
+            \begin{equation*}
+                \frac{\Delta x^2}{\|(\Delta x, \Delta y)\|} \leq \frac{\Delta x^2}{\Delta x}
+                \xrightarrow{(\Delta x, \Delta y)\to\vec{0}} 0
+            \end{equation*}
+            %
+            e analogamente para $\Delta y$.
+        \end{proof}
+        %
+        \item
+        %
+        \begin{proof}
+            Temos que
+            %
+            \begin{align*}
+                \varphi(x+\vec{v}) &= f(x+\vec{v})\cdot g(x+\vec{v}) \\
+                                   &= [f(x) + f(\vec{v})][g(x) + g(\vec{v})] \\
+                                   &= \varphi(x) + f(x)\cdot g(\vec{v}) + g(x)\cdot f(\vec{v}) + f(\vec{v})\cdot g(\vec{v}).
+            \end{align*}
+            %
+            Como $f,g$ são funcionais lineares, segue que
+            %
+            \begin{equation*}
+                \frac{f(\vec{v})\cdot g(\vec{v})}{\|\vec{v}\|} \xrightarrow{\vec{v}\to \vec{0}} 0
+            \end{equation*}
+            %
+            e, portanto, a derivada $\varphi'(x)\cdot \vec{v}$ existe e é 
+            $f(x)\cdot g(\vec{v}) + g(x)\cdot f(\vec{v})$.
+        \end{proof}
+        %
+        \item 
+        %
+        \begin{proof}
+            Usando que $f,g$ são diferenciáveis e sendo $\rho_f, \rho_g$ os respectivos erros nas
+            aproximações pelas derivadas, temos que 
+            %
+            \begin{align*}
+                \xi(x+\vec{h}) &= \left\langle f(x+\vec{h}), g(x+\vec{h}) \right\rangle \\
+                               &= \xi(x) + \left\langle f'(x)\cdot\vec{h}, g(x) \right\rangle 
+                               + \left\langle f(x), g'(x)\cdot\vec{h} \right\rangle
+                               + \rho_{\xi}(\vec{h}),
+            \end{align*}
+            %
+            sendo
+            %
+            \begin{align*}
+                \rho_{\xi}(\vec{h}) &= \left\langle f'(x)\cdot\vec{h}, g'(x)\cdot\vec{h} \right\rangle \\
+                                    &+ \left\langle f'(x)\cdot\vec{h}, \rho_g(\vec{h}) \right\rangle \\
+                                    &+ \left\langle \rho_f(\vec{h}), g'(x)\cdot\vec{h} \right\rangle \\
+                                    &+ \left\langle f(x), \rho_g(\vec{h}) \right\rangle \\
+                                    &+ \left\langle \rho_f(\vec{h}), g(x) \right\rangle \\
+                                    &+ \left\langle \rho_f(\vec{h}), \rho_g(\vec{h}) \right\rangle.
+            \end{align*}
+            %
+            Como $f$ e $g$ são diferenciáveis, segue que $\rho_{\xi}(\vec{h})$ é um infinitésimo com
+            respeito a $\vec{h}$ e, portanto, $\xi'(x)\cdot\vec{h} = \left\langle f'(x)\cdot\vec{h}, 
+            g(x) \right\rangle + \left\langle f(x), g'(x)\cdot\vec{h} \right\rangle$.
+        \end{proof}
+        %
+    \end{enumerate}
 %
 \paragraph{Exercício 3.}
     a
@@ -124,12 +206,77 @@
     a
 %
 \paragraph{Exercício 5.}
-    a
+    Usando o método do Exercício 1, temos que o candidato a derivada é
+    %
+    \begin{align*}
+        f'(X)\cdot\vec{h} &= \lim_{t\to 0}\frac{1}{t}\left[ (X+t\vec{h})^3 - X^3 \right] \\
+                          &= \lim_{t\to 0}\frac{1}{t}\left[ tX^2\cdot\vec{h} + tX\cdot\vec{h}\cdot X
+                          + t^2X\cdot\vec{h}^2 + t\vec{h}\cdot X^2 + t^2\vec{h}\cdot X\cdot\vec{h}
+                          + t^2\vec{h}^2\cdot X + t^3\vec{h}^3 \right] \\
+                          &= X^2\cdot\vec{h} + X\cdot\vec{h}\cdot X + \vec{h}\cdot X^2.
+    \end{align*}    
+    %
+    Vamos, então, mostrar que esse é o caso.
+    %
+    \begin{proof}
+        Temos
+        %
+        \begin{align*}
+            f(X+\vec{h}) = (X+\vec{h})^3 &= X^3 + X^2\cdot\vec{h} + X\cdot\vec{h}\cdot X
+                                         + X\cdot\vec{h}^2 + \vec{h}\cdot X^2 + \vec{h}\cdot X\cdot\vec{h}
+                                         + \vec{h}^2\cdot X + \vec{h}^3 \\
+                                         &= f(X) + f'(X)\cdot\vec{h} + \rho(\vec{h}), \, \forall\vec{h}
+        \end{align*}
+        %
+        sendo $f'(X)\cdot\vec{h}$ o candidato a derivada e $\rho(\vec{h}) = X\cdot\vec{h}^2 + 
+        \vec{h}\cdot X\cdot\vec{h} + \vec{h}^2\cdot X + \vec{h}^3$. Ora, mas 
+        $\rho(\vec{h})/\|\vec{h}\| \xrightarrow{\vec{h}\to\vec{0}} \vec{0}$ (basta estimar superiormente
+        cada uma das parcelas), de modo que $f$ é diferenciável em todos os pontos de $E$.
+    \end{proof}
+    %
 %
 \paragraph{Exercício 6.}
-    a
+    Dados $E,F$ espaços vetoriais normados quaisquer, dizemos que $f:E\to F$ é diferenciável em $a\in E$ 
+    se podemos escrever
+    %
+    \begin{equation*}
+        f(a+\vec{v}) = f(a) + T\vec{v} + \rho(\vec{v}),
+    \end{equation*}
+    %
+    sendo $T\in\mathcal{L}(E,F)$ com $\rho(\vec{v})/\|\vec{v}\| \xrightarrow{\vec{v}\to\vec{0}} \vec{0}$.
+    Nesse caso, $T = f'(a)$. Vamos mostrar que $f$ ser contínua em $x$ é equivalente à continuidade de
+    $T$ em $x$.
+    %
+    \begin{proof}
+        Temos $f$ contínua em $x$ se, e somente se
+        %
+        \begin{equation*}
+            \lim_{a\to x} f(a) = f(x).
+        \end{equation*}
+        %
+        Usando que $f$ é diferenciável em $x$, segue que $f$ é contínua em $x$ se, e somente se,
+        %
+        \begin{align*}
+            f(x+\vec{v}) 
+            = f(x) + \lim_{a\to x} f'(a)\cdot\vec{v} + \rho(\vec{v}) 
+            = f(x) + f'(x)\cdot\vec{v} + \rho(\vec{v}),
+        \end{align*}
+        %
+        ou seja, se, e só se, $f'(a) \xrightarrow{a\to x} f'(x)$, i.e., $T$ é contínua em $x$.
+    \end{proof}
+    %
 %
 \paragraph{Exercício 7.}
-    a
+    \begin{proof}
+        Note que, sendo $h = x\cdot e^{iy}$, temos
+        %
+        \begin{equation*}
+            \lim_{t\to 0} \frac{f(th)}{t} = \lim_{t\to 0} \frac{(tx/y)^2}{t} = \lim_{t\to 0} t(x/y)^2 = 0.
+        \end{equation*}
+        %
+        Entretanto, $f$ não é contínua na origem. De fato, temos que $f'(x\cdot e^{iy})=[2x/y^2, -2x^2/y^3]$,
+        que não é contínua na origem pois quando fixamos $x$ e fazemos $y$ tender a zero, o limite não existe.
+        Logo, segue do Exercício 6 que $f$ não é contínua na origem.
+    \end{proof}
 %
 \end{document}
