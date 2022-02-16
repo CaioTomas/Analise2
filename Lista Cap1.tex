@@ -1,0 +1,135 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{wasysym}
+\usepackage{url}
+\usepackage{float} 
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usepackage[shortlabels]{enumitem}
+\usepackage{esint}
+\usepackage{multicol}
+\usepackage{todonotes}
+
+\newtheorem{definition}{Definição}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\res}{\mathrm{res}}
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{\textbf{Análise 2}\\ Exercícios Cap. 1}
+\author{Caio Tomás de Paula}
+\date{18/02/2022}
+\begin{document}
+
+\maketitle
+
+\paragraph{Exercício 1.}
+%
+    \begin{enumerate}[a)]
+        \item Temos
+        %
+        \begin{align*}
+            f'(z)\cdot h &= \lim_{t\to 0} \frac{f(4+t, -1+2t) - f(4,-1)}{t} \\
+                         &= \lim_{t\to 0} \frac{((4+t)^2 -1+2t, 4+t+(-1+2t)^2) - (15,5)}{t} \\
+                         &= \lim_{t\to 0} \frac{(t^2+10t, 4t^2-3t)}{t} \\
+                         &= \lim_{t\to 0} \frac{(t+10,4t-3)}{t} \\
+                         &= (10,-3).
+        \end{align*}
+        %
+        \item Temos
+        %
+        \begin{align*}
+            \varphi'(x)\cdot v &= \lim_{t\to 0} \frac{\varphi(x+tv) - \varphi(x)}{t} \\
+                               &= \lim_{t\to 0} \frac{1}{t}\cdot\left[ (f(x) + f(tv))(g(x) + g(tv)) -
+                               f(x)\cdot g(x) \right] \\
+                               &= \lim_{t\to 0} [f(x)\cdot g(v) + g(x)\cdot f(v) + tf(v)\cdot g(v)] \\
+                               &= f(x)\cdot g(v) + g(x)\cdot f(v),
+        \end{align*}
+        %
+        usando o fato que $f$ e $g$ são funcionais lineares.
+        \item Temos
+        %
+        \begin{align*}
+            \xi'(x)\cdot h &= \lim_{t\to 0} \frac{\xi(x+th) - \xi(x)}{t} \\
+                           &= \lim_{t\to 0} \frac{1}{t}\cdot\left[ \langle f(x+th), g(x+th) \rangle 
+                           - \langle f(x), g(x) \rangle \right] \\
+                           &= \lim_{t\to 0} \frac{1}{t}\left[ \langle f(x+th), g(x+th) \rangle
+                           - \langle f(x), g(x+th) \rangle
+                           + \langle f(x), g(x+th) \rangle 
+                           - \langle f(x), g(x) \rangle \right] \\
+                           &= \lim_{t\to 0} \left\langle \frac{f(x+th) - f(x)}{t}, g(x+th) \right\rangle
+                           + \left\langle f(x), \frac{g(x+th) - g(x)}{t} \right\rangle \\
+                           &= \langle f'(x)\cdot h, g(x) \rangle + \langle f(x), g'(x)\cdot h \rangle
+        \end{align*}
+        %
+        novamente usando o fato de que $f$ e $g$ são funcionais lineares e propriedades do produto interno
+        (inclusive que ele é contínuo).
+    \end{enumerate}
+%
+\paragraph{Exercício 2.}
+    a
+%
+\paragraph{Exercício 3.}
+    a
+%
+\paragraph{Exercício 4.}
+    a
+%
+\paragraph{Exercício 5.}
+    a
+%
+\paragraph{Exercício 6.}
+    a
+%
+\paragraph{Exercício 7.}
+    a
+%
+\end{document}
