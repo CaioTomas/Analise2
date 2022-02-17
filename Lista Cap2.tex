@@ -372,7 +372,8 @@
                                                + f(a_1, a_2, \dots, v_p) \\
                                                &+ \underbrace{f(v_1, v_2, a_3, \dots, a_p) 
                                                + \cdots 
-                                               + f(a_1, a_2\dots, a_{n-2}, v_{n-1}, v_n)}_{\text{infinitésimo}},
+                                               + f(a_1, a_2\dots, a_{n-2}, v_{n-1},v_n)}_{
+                                               \text{infinitésimo}},
             \end{align*}
             %
             em que o fato do termo destacado ser um infinitésimo segue do fato de que cada uma das parcelas,
@@ -473,10 +474,39 @@
         %
     \end{enumerate}
 %
-\paragraph{Exercício 9.}\todo{fazer}
-    a
-%
-\paragraph{Exercício 10.}\todo{fazer}
-    a
-%
+\paragraph{Exercício 9.}
+    %
+    \begin{proof}
+        Se $f$ tem um mínimo (máximo) relativo em $x\in U$, então existe uma vizinhança $V\subset U$ de 
+        $x$ tal que $f(x) \leq f(x'), \forall x'\in V$. Como $f$ é diferenciável em $x$, temos que
+        %
+        \begin{equation*}
+            f'(x) = \lim_{h\to 0} \frac{f(x + h) - f(x)}{h}.
+        \end{equation*}
+        %
+        Para todo $h\in V$, temos que $f(x+h) - f(x) \geq 0$. Daí, segue que
+        %
+        \begin{align*}
+            \lim_{h\to 0^-} \frac{f(x + h) - f(x)}{h} \leq 0 \leq \lim_{h\to 0^+} \frac{f(x + h) - f(x)}{h},
+        \end{align*}
+        %
+        o que implica $f'(x) = 0$. Para um ponto de máximo relativo temos um raciocínio análogo, mas
+        agora $f(x+h) - f(x) \leq 0$ e
+        %
+        \begin{align*}
+            \lim_{h\to 0^+} \frac{f(x + h) - f(x)}{h} \leq 0 \leq \lim_{h\to 0^-} \frac{f(x + h) - f(x)}{h},
+        \end{align*}
+        %
+        e segue novamente que $f'(x) = 0$.
+    \end{proof}
+    %
+\paragraph{Exercício 10.}\todo{terminar}
+    %
+    \begin{proof}
+        Esse resultado parece uma espécie de generalização do teorema de Rolle para o caso $m=1$.
+        Intuitivamente, o fato da função ir para zero nos pontos de acumulação faz com que $f$ não
+        possa crescer nem decrescer indefinidamente e isso implica que a derivada se anula em
+        algum momento.
+    \end{proof}
+    %
 \end{document}
