@@ -60,6 +60,7 @@
 \DeclareMathOperator{\rot}{rot}
 \DeclareMathOperator{\diverg}{div}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
 
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
@@ -350,7 +351,7 @@
         ou seja, $f'(X)\cdot H$ é simétrica para todo $H\in E$. Ademais, se $X$ é ortogonal, 
     \end{proof}
     %
-\paragraph{Exercício 8.}\todo{terminar}
+\paragraph{Exercício 8.}
 %
     \begin{enumerate}[a)]
         \item 
@@ -438,6 +439,38 @@
         \end{proof}
         %
         \item 
+        %
+        \begin{proof}
+            Temos que $\det'(X) = 0$ se, e somente se, para todo $H\in E$, vale
+            %
+            \begin{equation*}
+                \det\begin{bmatrix}
+                        h_{11} & x_{12} & \cdots & x_{1n} \\
+                        h_{21} & x_{22} & \cdots & x_{1n} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        h_{n1} & x_{n2} & \cdots & x_{nn} \\
+                    \end{bmatrix}
+                    + \cdots + 
+                \det\begin{bmatrix}
+                        x_{11} & x_{12} & \cdots & h_{1n} \\
+                        x_{21} & x_{22} & \cdots & h_{2n} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        x_{n1} & x_{n2} & \cdots & h_{nn} \\
+                    \end{bmatrix} = 0.
+            \end{equation*}
+            %
+            Se $\rank(X)\leq n-2$, então pelo menos duas colunas de $X$ são combinações lineares
+            das demais; logo, ainda que tiremos uma delas, a outra restará e, por isso, teremos
+            $\det'(X)\cdot H = 0, \forall H\in E$ devido à forma dessa derivada.
+            
+            Por outro lado, se $\det'(X)\cdot H = 0, \forall H\in E$, então em todas as parcelas da soma
+            acima temos pelo menos uma coluna que é combinação linear das demais. Como $H$ é arbitrário,
+            segue que essas colunas pertencem a $X$. Como cada uma das parcelas contém uma tal coluna
+            de $X$ que é combinação linear das demais colunas de $X$, segue que deve haver pelo menos
+            duas dessas colunas em $X$ pois, se houvesse apenas uma, digamos a primeira, então a primeira
+            parcela da soma acima não seria nula para todo $H$. Portanto, $\rank(X)\leq n-2$.
+        \end{proof}
+        %
     \end{enumerate}
 %
 \paragraph{Exercício 9.}\todo{fazer}

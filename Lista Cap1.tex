@@ -60,6 +60,7 @@
 \DeclareMathOperator{\rot}{rot}
 \DeclareMathOperator{\diverg}{div}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
 
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
@@ -210,9 +211,23 @@
         %
     \end{enumerate}
 %
-\paragraph{Exercício 3.}\todo{fazer}
-    a
-%
+\paragraph{Exercício 3.}
+    %
+    \begin{proof}
+        Temos que
+        %
+        \begin{align*}
+            \lim_{t\to 0} \frac{r(0+th) - r(0)}{t} &= \lim_{t\to 0} \frac{r(th)}{t} \\
+                                                   &= \lim_{t\to 0} \frac{1}{t}[f(x_0 + th) - f(x_0) 
+                                                   - f'(x_0)\cdot th] \\
+                                                   &= f'(x_0)\cdot h - f'(x_0)\cdot h \\
+                                                   &= 0,
+        \end{align*}
+        %
+        onde o limite existe pois $f$ é diferenciável. Logo, $r$ é diferenciável na origem (e a derivada 
+        vale $0$).
+    \end{proof}
+    %
 \paragraph{Exercício 4.}\todo{fazer}
     a
 %
