@@ -1,0 +1,235 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{wasysym}
+\usepackage{url}
+\usepackage{float} 
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usepackage[shortlabels]{enumitem}
+\usepackage{esint}
+\usepackage{multicol}
+\usepackage{todonotes}
+
+\newtheorem{definition}{Definição}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\res}{\mathrm{res}}
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Sym}{Sym}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{\textbf{Análise 2}\\ Exercícios Cap. 5}
+\author{Caio Tomás de Paula}
+\date{07/03/2022}
+\begin{document}
+
+\maketitle
+
+\paragraph{Exercício 1.}\todo{terminar}
+    %
+    \begin{proof}
+        Temos que
+        %
+        \begin{equation*}
+            f'(x) = a + 2x\sin(1/x) - \cos(1/x), \forall x\in\R - \{0\}.
+        \end{equation*}
+        %
+    \end{proof}
+    %
+\paragraph{Exercício 2.}
+    %
+    \begin{proof}
+        Da convexidade de $U$, temos que $[a, a+h]\subset U$. Assim,
+        podemos aplicar a desigualdade do valor médio e usar a limitação
+        da derivada para obter
+        %
+        \begin{align*}
+            |f(a+h) - f(a)| &\leq |h|\cdot\sup_{0<t<1} |f'(a+th)| \\
+                            &\leq |h|M.
+        \end{align*}
+        %
+        Daí, dado $\varepsilon >0$ podemos tomar $h$ tal que $|h| < \varepsilon/M$
+        e, assim,
+        %
+        \begin{equation*}
+            |f(a+h) - f(a)| \leq |h|M < \varepsilon,
+        \end{equation*}
+        %
+        para todo $a\in U$. Logo, $f$ é uniformemente contínua em $U$.
+    \end{proof}
+    %
+\paragraph{Exercício 3.}\todo{checar}
+    %
+    \begin{proof}
+        Segue da Proposição 5.1 (?)
+    \end{proof}
+    %
+\paragraph{Exercício 4.}
+    %
+    \begin{enumerate}[a)]
+        \item 
+        
+        \item
+        
+        \item
+        
+        \item
+    \end{enumerate}
+    %
+\paragraph{Exercício 5.}\todo{terminar}
+    %
+    \begin{proof}
+        Primeiro, supondo $E = \R^m$ com a norma do máximo e $F = \R^n$ com
+        a norma do máximo, temos que
+        %
+        \begin{align*}
+            |T| \geq |T\cdot e_j| = \max_i |t_{ij}|, \forall j = 1, \dots, n.
+        \end{align*}
+        %
+        Logo,
+        %
+        \begin{align*}
+            |T| \geq \max_{i,j} |t_{ij}|, \forall j = 1, \dots, n.
+        \end{align*}
+        %
+        % mostrar a outra cota
+        % mostrar o caso de R^n com outra norma 
+    \end{proof}
+    %
+\paragraph{Exercício 6.}
+    %
+    \begin{proof}
+        Note que em qualquer ponto $(x_0, t_0)\in\R^2$ com $t_0\neq 0$ teremos
+        $F$ contínua, pois
+        %
+        \begin{align*}
+            \lim_{(x,t)\to (x_0,t_0)} F(x,t)
+            = \lim_{(x,t)\to (x_0,t_0)} \frac{f(x+t) - f(x)}{t}
+            = \frac{f(x_0+t_0) - f(x_0)}{t_0}
+            = F(x_0, t_0).
+        \end{align*}
+        %
+        Em particular, $F$ é contínua em $x$. Daí, temos
+        %
+        \begin{align*}
+            \lim_{(x,t) \to (x, 0)} F(x,t)
+            = \lim_{t\to 0} \frac{f(x+t) - f(x)}{t}
+            = f'(x)
+            = F(x,0),
+        \end{align*}
+        %
+        de modo que $F$ é contínua em $\R^2$.
+    \end{proof}
+    %
+\paragraph{Exercício 7.}\todo{terminar}
+    %
+    A princípio, o maior $U$ que podemos tomar é
+    %
+    \begin{equation*}
+        U = \mathcal{Q}_1 \cup \mathcal{Q}_3,
+    \end{equation*}
+    %
+    ou seja, a união do primeiro e terceiro quadrantes (sem incluir os eixos).
+    %
+\paragraph{Exercício 8.}
+    %
+    a
+    %
+\paragraph{Exercício 9.}
+    %
+    a
+    %
+\paragraph{Exercício 10.}
+    %
+    a
+    %
+\paragraph{Exercício 11.}\todo{terminar}
+    %
+    \begin{proof}
+        Dado $\varepsilon > 0$, defina
+        %
+        \begin{equation*}
+            X = \{ t\in [0,1] : |f(t) - f(0)| \leq g(t) - g(0) + 
+                                              \varepsilon t + \varepsilon \}.
+        \end{equation*}
+        %
+        Note que $0\in X$, logo $X\neq\varnothing$. Ademais, dada uma sequência
+        $(a_n)_{n\in\N}$ de pontos de $X$ que converge para $a$, temos que
+        %
+        \begin{equation*}
+            |f(a_n) - f(0)| \leq g(a_n) - g(0) + \varepsilon a_n + \varepsilon, 
+            \forall n\in\N.
+        \end{equation*}
+        %
+        Tomando o limite e usando a diferenciabilidade de $f$ e de $g$, temos
+        %
+        \begin{equation*}
+            |f(a) - f(0)| \leq g(a) - g(0) + \varepsilon a + \varepsilon,
+        \end{equation*}
+        %
+        ou seja, $a\in X$ e, portanto, $X$ é fechado. Por fim, se
+        $0 < a < 1$ e $a\in X$ vamos mostrar que existe $\delta > 0$
+        tal que $a + \delta \in X$, ou seja, que $X$ é aberto.
+        % terminar a demonstração
+    \end{proof}
+    %
+\end{document}

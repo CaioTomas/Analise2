@@ -228,9 +228,58 @@
         vale $0$).
     \end{proof}
     %
-\paragraph{Exercício 4.}\todo{fazer}
-    a
-%
+\paragraph{Exercício 4.}
+    %
+    \begin{proof}
+        Definamos as seguintes funções em $V\times B$:
+        %
+        \begin{align*}
+            C: (x,h) &\to f'(x_0)h, \\
+            B: (x,h) &\to f(x), \\
+            A: (x,h) &\to f(x + h). 
+        \end{align*}
+        %
+        Vamos mostrar que essas três aplicações são diferenciáveis. $C$ é imediato, pois é uma aplicação
+        linear. Para $B$, temos que
+        %
+        \begin{align*}
+            B(x+\vec{v}, h+\vec{w}) &= f(x+\vec{v}) \\
+                                    &= f(x) + f'(x)\cdot\vec{v} + \rho_f(\vec{v}) \\
+                                    &= B(x,h) + f'(x)\cdot\vec{v} + \rho_f(\vec{v}).
+        \end{align*}
+        %
+        Como
+        %
+        \begin{equation*}
+            \frac{\rho_f(\vec{v})}{\|(\vec{v}, \vec{w})\|} 
+            \leq \frac{\rho_f(\vec{v})}{\|\vec{v}\|} \xrightarrow{(\vec{v}, \vec{w}) \to (\vec{0},\vec{0})} 0,
+        \end{equation*}
+        %
+        segue que $B$ é diferenciável.
+        
+        Para $A$, temos
+        %
+        \begin{align*}
+            A(x+\vec{v}, h+\vec{w}) &= f(x+\vec{v} + h+\vec{w}) \\
+                                    &= f(x+h) + f'(x+h)\cdot (\vec{v}+\vec{w}) + \rho_f(\vec{v}+\vec{w}) \\
+                                    &= A(x,h) + f'(x+h)\cdot (\vec{v}+\vec{w}) + \rho_f(\vec{v}+\vec{w})
+        \end{align*}
+        %
+        e, como
+        %
+        \begin{equation*}
+            \frac{\rho_f(\vec{v}+\vec{w})}{\|(\vec{v}, \vec{w})\|} 
+            \leq \sqrt{2}\frac{\rho_f(\vec{v}+\vec{w})}{\|\vec{v}\|+\|\vec{w}\|}
+            \leq \sqrt{2}\frac{\rho_f(\vec{v}+\vec{w})}{\|\vec{v}+\vec{w}\|}
+            \xrightarrow{(\vec{v}, \vec{w}) \to (\vec{0},\vec{0})} 0,
+        \end{equation*}
+        %
+        segue que $A$ é diferenciável.
+        
+        Portanto, como $r(x,h) = A(x,h) - B(x,h) - C(x,h)$, segue que $r$ é diferenciável em $V\times B$
+        (que era o domínio onde estávamos considerando definidas $A, B$ e $C$).
+    \end{proof}
+    %
 \paragraph{Exercício 5.}
     Usando o método do Exercício 1, temos que o candidato a derivada é
     %

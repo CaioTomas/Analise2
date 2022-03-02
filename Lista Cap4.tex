@@ -61,6 +61,7 @@
 \DeclareMathOperator{\diverg}{div}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Sym}{Sym}
 
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
@@ -84,48 +85,402 @@
 \maketitle
 
 \paragraph{Exercício 1.}
-    a
-%
+    %
+    \begin{proof}
+        Tomando $h\in\R^m$, temos que
+        %
+        \begin{align*}
+            \varphi(x+h) &= \left\langle T(x+h)\cdot f(x+h), g(x+h) \right\rangle \\
+                         &= \left\langle [T(x) + T(h)]\cdot [f(x) + f'(x)\cdot h + \rho_f(h)], 
+                                         g(x) + g'(x)\cdot h + \rho_g(h) \right\rangle.
+        \end{align*}
+        %
+        Expandindo o produto interno usando a diferenciabilidade de $T, f$ e $g$, obtemos
+        %
+        \begin{align*}
+            \varphi(x+h) &= \varphi(x) \\
+                         &+ \left\langle T(x)\cdot f'(x)\cdot h, g(x) \right\rangle \\
+                         &+ \left\langle T(x)\cdot f(x), g'(x)\cdot h \right\rangle \\
+                         &+ \left\langle T(x)\cdot f'(x)\cdot h, g'(x)\cdot h \right\rangle \\
+                         &+ \rho_{\varphi}(h),
+        \end{align*}
+        %
+        com $\rho_{\varphi(h)}/h \xrightarrow{h\to\vec{0}} \vec{0}$. Logo, 
+        %
+        \begin{align*}
+            \varphi'(x)\cdot h &= \left\langle T(x)\cdot f'(x)\cdot h, g(x) \right\rangle \\
+                         &+ \left\langle T(x)\cdot f(x), g'(x)\cdot h \right\rangle \\
+                         &+ \left\langle T(x)\cdot f'(x)\cdot h, g'(x)\cdot h \right\rangle.
+        \end{align*}
+        %
+    \end{proof}
+    %
 \paragraph{Exercício 2.}
-    a
-%
+    %
+    \begin{proof}
+        Pela regra da cadeia,
+        %
+        \begin{equation*}
+            (g\circ f)'(x) = Dg(f(x))\cdot f'(x).
+        \end{equation*}
+        %
+        Diferenciando essa igualdade em $x$ e usando a regra da cadeia e a ``regra do produto'', temos
+        %
+        \begin{align*}
+            (g\circ f)''(x) &= (Dg(f(x)))'\cdot f'(x) + Dg(f(x))\cdot f''(x) \\
+                            &= D^2g(f(x))\cdot f'(x)\cdot f'(x) + Dg(f(x))\cdot f''(x) \\
+                            &= g''(y)\cdot f'(x)\cdot f'(x) + g'(y)\cdot f''(x),
+        \end{align*}
+        %
+        sendo $y=f(x)$.
+    \end{proof}
+    %
 \paragraph{Exercício 3.}
 %
     \begin{enumerate}[a)]
-        \item 
+        \item Seja $S = f^{-1}(k)$ a superfície de nível de $f$ tal que $\lambda(J)\subset S$. Temos
+        então que dado $t\in J$, $\lambda(t) = f^{-1}(c)$ para algum $c\in\R$ e, daí, $(f\circ\lambda)(t) = c$.
+        Portanto, temos, por um lado, que
         %
-        \item
+        \begin{equation*}
+            (f\circ \lambda)'(t) = 0,
+        \end{equation*}
+        %
+        mas, usando a regra da cadeia, também temos que
+        %
+        \begin{equation*}
+            0 = (f\circ \lambda)'(t) = Df(\lambda(t))\cdot\lambda'(t) 
+                                     = \left\langle u(\lambda(t)), \lambda'(t) \right\rangle,
+        \end{equation*}
+        %
+        ou seja, o gradiente de $f$ em $\lambda(t)$ é ortogonal a $\lambda'(t)$ para todo $t\in J$.
+        %
+        \item Para que $\partial f/\partial h (x)$ seja máximo, devemos ter $h$ na mesma direção do
+        gradiente devido ao fato de que $\left\langle u,h \right\rangle = \partial f/\partial h (x)$,
+        ou seja, $h = \alpha u$ com $\alpha\in\R$ positivo. Portanto, como $h$ tem norma 1, segue que
+        %
+        \begin{equation*}
+            \|\alpha u\| = 1 \iff \alpha = \frac{1}{\|u\|}.
+        \end{equation*}
+        %
+        Daí, segue que o valor máximo da derivada direcional é
+        %
+        \begin{equation*}
+            \left\langle u, \alpha u \right\rangle = \alpha \|u\|^2 = \|u\|.
+        \end{equation*}
+        %
     \end{enumerate}
 %
 \paragraph{Exercício 4.}
-    a
-%
+    %
+    \begin{proof}
+        No caso de $f(tx) = tf(x)$, temos que
+        %
+        \begin{equation*}
+            \frac{\partial f}{\partial v}(0) = \lim_{t\to 0} \frac{f(tv)}{t} = f(v),
+        \end{equation*}
+        %
+        ou seja, $f'(0)\cdot v = f(v)$ e, portanto, $f$ é linear. Similarmente,
+        no caso de $f(tx) = t^2f(x)$ temos que $f''(0)\cdot v = f(v)$, e podemos
+        definir a função bilinear
+        %
+        \begin{equation*}
+            B:\R^m\times\R^m \to \R^n
+        \end{equation*}
+        %
+        por
+        %
+        \begin{equation*}
+            B(x,y) = \frac{1}{2}\left[ f(x+y) - f(x) - f(y) \right],
+        \end{equation*}
+        %
+        de modo que
+        %
+        \begin{equation*}
+            B(x,x) = \frac{1}{2}\left[ f(2x) - 2f(x) \right]
+                   = \frac{1}{2}[ 4f(x) - 2f(x) ]
+                   = f(x), \forall x\in\R^m.
+        \end{equation*}
+        %
+    \end{proof}
+    %
+    Quanto à observação, $f:\R^2\to\R$ dada por $f(x,y) = \sqrt{x^4 + y^4}$ satisfaz
+    $f(tx,ty) = t^2f(x,y)$ mas não é quadrática porque apesar de existir
+    %
+    \begin{equation*}
+        f'(x,y) = 2\left( \frac{x^3}{\sqrt{x^4 + y^4}}, \frac{y^3}{\sqrt{x^4 + y^4}} \right) 
+                = 2(f'_1, f'_2),
+    \end{equation*}
+    %
+    as funções coordenadas de $f'$ não são diferenciáveis na origem já que
+    %
+    \begin{align*}
+        \partial_x f'_1 (0,0) &= \lim_{h\to 0} \frac{h^3/h^2 - 0}{h} = 1, \\
+        \partial_y f'_1 (0,0) &= \lim_{h\to 0} \frac{0 - 0}{h} = 0
+    \end{align*}
+    %
+    e
+    %
+    \begin{align*}
+        \partial_x f'_2 (0,0) &= \lim_{h\to 0} \frac{0 - 0}{h} = 0, \\
+        \partial_y f'_2 (0,0) &= \lim_{h\to 0} \frac{h^3/h^2 - 0}{h} = 1.
+    \end{align*}
+    %
 \paragraph{Exercício 5.}
-    a
-%
+    %
+    \begin{proof}
+        Dado $h\in\R^m$, temos
+        %
+        \begin{align*}
+            \varphi(x+h) &= f'(x+h)\cdot k \\
+                         &= f'(x)\cdot k + (f''(x)\cdot h)\cdot k + \rho_{f'}(h)\cdot k \\
+                         &= \varphi(x) + (f''(x)\cdot h)\cdot k + \rho_{f'}(h)\cdot k.
+        \end{align*}
+        %
+        Como $\rho_{f'}(h)\cdot k \xrightarrow{h\to \vec{0}} \vec{0}$, segue que $(\varphi'(x)\cdot h)/h 
+        = (f''(x)\cdot h)\cdot k$.
+    \end{proof}
+    %
 \paragraph{Exercício 6.}
-    a
-%
+    %
+    Temos que
+    %
+    \begin{align*}
+        \varphi(t+h) = A(t(x+h)) &= A(tx) + A'(tx)\cdot h + \rho_A(h) \\
+                                 &= \varphi(t) + A'(tx)\cdot h + \rho_A(h),
+    \end{align*}
+    %
+    de modo que $\varphi'(t)\cdot h = (A'(tx)\cdot h)\cdot x$.
 \paragraph{Exercício 7.}
-    a
-%
+    %
+    \begin{proof}
+        Vamos primeiro mostrar que as $i$-ésimas derivadas são $(k-i)$-homogêneas, com $0\leq i < k$.
+        De fato, derivando em relação a $x$ e usando a regra da cadeia $i$ vezes, temos que
+        %
+        \begin{equation}
+        \label{eq:homogeneidade-derivada}
+            t^i f^{(i)}(tx) = t^kf^{(i)}(x) \implies f^{(i)}(tx) = t^{k-i}f^{(i)}(x).
+        \end{equation}
+        %
+        Se derivarmos $k$ vezes, temos
+        %
+        \begin{equation*}
+            t^k f^{(k)}(tx) = t^kf^{(k)}(x) \implies f^{(k)}(tx) = f^{(k)}(x),
+        \end{equation*}
+        %
+        para todo $t\in\R$ e para todo $x\in\R^m$. Daí, segue que $f^{(k)}(0) = f^{(k)}(x)$ para todo 
+        $x$, ou seja, $f^{(k)}$ é constante.
+        
+        Agora, derivando \eqref{eq:homogeneidade-derivada} $k-i$ vezes em relação a $t$, obtemos
+        %
+        \begin{align*}
+            x^{k-i}\frac{\partial^{k-i}f^{(i)}}{\partial t^{k-i}}(tx) 
+            = (k-i)!f^{(i)}(x).
+        \end{align*}
+        %
+        Tomando $t=0$, segue que
+        %
+        \begin{align*}
+            f^{(i)}(x) =
+            \frac{x^{k-i}}{(k-i)!}\cdot\frac{\partial^{k-i}f^{(i)}}{\partial t^{k-i}}(0),
+        \end{align*}
+        %
+        ou seja,
+        %
+        \begin{align*}
+            f^{(i)}(x) =
+            \frac{f^{(k)}(0)}{(k-i)!}\cdot x^{k-i}.
+        \end{align*}
+        %
+        Daí, aplicando o resultado para $f:\mathcal{L}(\R^m)\to\mathcal{L}(\R^m)$ dada por $f(X) = X^k$,
+        temos
+        %
+        \begin{equation*}
+            f^{(i)}(X) = \frac{k!}{(k-1)!}X^{k-i} \implies 
+            |f^{(i)}(X)| \leq \frac{k!}{(k-1)!}|X|^{k-i}.
+        \end{equation*}
+        %
+    \end{proof}
+    %
 \paragraph{Exercício 8.}
-%
-    \begin{enumerate}[a)]
-        \item 
+    %
+    \begin{proof}
+        Temos que dado $v = (a,b)\in\R^2$,
         %
-        \item
+        \begin{align*}
+            |f(v)| = |T| &= \sup_{|(x,y)| = 1} |T\cdot (x,y)| \\
+                         &= \sup_{|(x,y)| = 1} |(ax, by)| \\
+                         &= \sup_{|(x,y)| = 1} \max\{ |a|\cdot|x|, |b|\cdot |y| \} \\
+                         &= \max\{ |a|, |b| \} \\
+                         &= |v|.
+        \end{align*}
         %
-        \item 
-    \end{enumerate}
-%
+        Portanto, a norma de $F$ não é diferenciável, pois a norma do máximo não o é nas 
+        diagonais $x = \pm y$. Generalizando, no espaço das matrizes reais $n\times m$, 
+        a norma $|T| = \sup\{ |T\cdot v| : v\in\R^m, |v| = 1 \}$ não é diferenciável,
+        pois $f(v) = T$ com $T\cdot (x_1, \dots, x_m) = (v_1x_1, \dots, v_mx_m)$ é tal
+        que
+        %
+        \begin{align*}
+            |f(v)| = |T| &= \sup_{|(x_1, \dots, x_m)| = 1} |T\cdot (x_1, \dots, x_m)| \\
+                         &= \sup_{|(x_1, \dots, x_m)| = 1} |(v_1x_1, \dots, v_mx_m)| \\
+                         &= \sup_{|(x_1, \dots, x_m)| = 1} \max\{ |v_1|\cdot|x_1|, \dots, 
+                         |v_m|\cdot|x_m| \} \\
+                         &= \max\{ |v_1|, \dots, |v_m| \} \\
+                         &= |v|,
+        \end{align*}
+        %
+        e a norma $\|\cdot\|_{\infty}$ em $\R^m$ não é diferenciável.
+    \end{proof}
+    %
 \paragraph{Exercício 9.}
-    a
-%
+    %
+    \begin{proof}
+        Primeiro, observe que a adjunta de uma matriz com entradas reais nada mais
+        é do que a transposta, haja vista que
+        %
+        \begin{align*}
+            \left\langle A\cdot e_i^{m}, e_j^{n} \right\rangle
+            &= j\text{-ésimo elemento da } i \text{-ésima coluna de } A \\
+            = \left\langle e_i^{m}, A^*\cdot e_j^{n} \right\rangle
+            &= i\text{-ésimo elemento da } j \text{-ésima coluna de } A^*,
+        \end{align*}
+        %
+        onde os sobrescritos indicam a dimensão dos vetores das bases canônicas de $\R^m$ e $\R^n$.
+        Com isso, definindo
+        %
+        \begin{equation*}
+            \left\langle A,B \right\rangle = \tr(A^tB),
+        \end{equation*}
+        %
+        temos que, para toda matriz $A$ real $n\times m$,
+        %
+        \begin{align*}
+            \left\langle A,A \right\rangle &= \tr(A^tA) \\
+                                           &= \sum_{i=1}^m (A^tA)_{ii} \\
+                                           &= \sum_{i=1}^{m}\sum_{j=1}^{n} a^t_{ij}a_{ji} \\
+                                           &= \sum_{i=1}^{m}\sum_{j=1}^{n} a^2_{ji} \geq 0
+        \end{align*}
+        %
+        e também
+        %
+        \begin{align*}
+            \left\langle A,A \right\rangle = \sum_{i=1}^{n}\sum_{j=1}^{m} a^2_{ji} = 0
+            \iff a_{ji} = 0, \forall i,j \iff A = 0.
+        \end{align*}
+        %
+        Ademais, como $\tr(A^t) = \tr(A)$, $\tr(A+B) = \tr(A)+\tr(B)$ e 
+        $\tr(\lambda A) = \lambda\tr(A)$, segue que dadas matrizes $A,B$ e $C$ $n\times m$ e
+        para qualquer $\lambda\in\R$, temos que
+        %
+        \begin{align*}
+            \left\langle A,B \right\rangle = \tr(A^tB) 
+            = \tr((B^tA)^t)
+            = \tr(B^tA)
+            = \left\langle B,A \right\rangle,
+        \end{align*}
+        %
+        e
+        %
+        \begin{align*}
+            \left\langle \lambda A + B, C \right\rangle 
+            &= \tr( (\lambda A + B)^tC ) \\
+            &= \tr( (\lambda A^t + B^t)C ) \\
+            &= \lambda\tr(A^tC) + \tr(B^tC) \\
+            &= \lambda\left\langle A,C \right\rangle + \left\langle B,C \right\rangle,
+        \end{align*}
+        %
+        e segue que $\tr(A^tB)$ define um produto interno no espaço das matrizes reais $n\times m$.
+        Consequentemente,
+        %
+        \begin{equation*}
+            \|A\| = \sqrt{\tr(A^tA)} = \sqrt{ \sum_{i=1}^{m}\sum_{j=1}^{n} a^2_{ji} }
+        \end{equation*}
+        %
+        define uma norma nesse mesmo espaço (diferenciável exceto no $0$?).
+        
+        Por fim, para todo $v\in\R^m$, temos que
+        %
+        \begin{align*}
+            A\cdot v = f_1(v)\cdot e_1 + \cdots + f_n(v)\cdot e_n,
+        \end{align*}
+        %
+        com $f_j:\R^m\to\R$ o funcional linear tal que $f_j(v) = \vec{a}_j\cdot v$, sendo
+        $\vec{a}_j$ a $j$-ésima linha da matriz de $A$. Com essa notação, temos que
+        %
+        \begin{equation*}
+            \|A\| = \sqrt{ |\vec{a}_1|^2 + \cdots + |\vec{a}_n|^2 }.
+        \end{equation*}
+        %
+        Daí, basta notar que
+        %
+        \begin{align*}
+            |A\cdot v|^2 &= |(\vec{a}_1\cdot v)e_1 + \cdots + (\vec{a}_n\cdot v)e_n|^2 \\
+                         &= |\vec{a}_1\cdot v|^2 + \cdots + |\vec{a}_n\cdot v|^2 \\
+                         &\leq (|\vec{a}_1|^2 + \cdots + |\vec{a}_n|^2)|v|^2 \\
+                         &= \|A\|^2 \cdot |v|^2
+        \end{align*}
+        %
+        pela ortonormalidade dos $e_j$'s e pela desigualdade de Cauchy-Schwarz. Tomando a raiz
+        de ambos os lados, concluímos que
+        %
+        \begin{equation*}
+            |A\cdot v| \leq \|A\|\cdot |v|,
+        \end{equation*}
+        %
+        como desejado.
+    \end{proof}
+    %
 \paragraph{Exercício 10.}
-    a
-%
+    %
+    Pela regra da cadeia,
+    %
+    \begin{equation*}
+        D(g\circ f)(x_0) = g'(f(x_0))\cdot f'(x_0) = g'(f(x_0))\cdot 0 = 0
+    \end{equation*}
+    %
+    e, pelo Exercício 2, temos
+    %
+    \begin{equation*}
+        D^2(g\circ f)(x_0) = g''(f(x_0))\cdot f'(x_0)\cdot f'(x_0) + g'(f(x))\cdot f''(x_0) = 0.
+    \end{equation*}
+    %
+    Se derivarmos novamente, cada uma das parcelas terá a primeira, segunda ou terceira derivadas 
+    de $f$ em $x_0$, de modo que cada parcela será $0$. Continuando a derivar até a ordem $k$,
+    vemos que cada umas das parcelas terá pelo menos uma derivada de $f$ em $x_0$ e, portanto,
+    $D^j(g\circ f)(x_0) = 0$ para $j=1,\dots,k$.
+    
+    Analogamente, se $f:U\to\R^n$ é $k$ vezes diferenciável e $D^jf(x_1) = 0$ para $j=1,\dots,k$
+    então $D^j(f\circ h)(x_0) = 0$ para os mesmos valores de $j$, seja qual for $h:V\to\R^q$
+    $k$vezes diferenciável com $h(V) \subset U$ e $h(x_0) = x_1$.
 \paragraph{Exercício 11.}
-    a
-%
+    %
+    \begin{proof}
+        Suponha $f$ par. Então $f(x) = f(-x) = f(z)$, sendo $z=-x$, e temos
+        %
+        \begin{equation*}
+            f'(x) = f'(z)\frac{dz}{dx} = -f'(-x) \implies f'(-x) = -f'(x),
+        \end{equation*}
+        %
+        ou seja, a primeira derivada de uma função par é ímpar. Ademais, se $f$ é ímpar,
+        temos $-f(x) = f(-x) = f(z)$ e 
+        %
+        \begin{equation*}
+            -f'(x) = f'(z)\frac{dz}{dx} = -f'(-x) \implies f'(-x) = f'(x),
+        \end{equation*}
+        %
+        ou seja, a primeira derivada de uma função ímpar é par.
+        
+        Portanto, se $f$ é par então sua primeira derivada é ímpar, a segunda é par, a terceira
+        é ímpar, a quarta é par e assim por diante. Dito de outro modo, as derivadas de ordem par
+        de uma função par são pares e as de ordem ímpar são ímpares. Além disso, para toda função
+        ímpar $g$ temos que $g(0) = 0$ pois $g(0) = -g(0)$. Logo, $f^{(k)}(0) = 0$ para todo $k$
+        ímpar.
+        
+        De semelhante modo, se $f$ é ímpar sua primeira derivada é par, a segunda é ímpar, a terceira
+        é par, a quarta é ímpar e assim por diante, ou seja, as derivadas de ordem ímpar de uma função
+        ímpar são pares e as de ordem par são ímpares. Ademais, $f^{(k)}(0) = 0$ para todo $k$ par,
+        pelo mesmo motivo acima.
+    \end{proof}
+    %
 \end{document}

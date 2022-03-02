@@ -61,6 +61,7 @@
 \DeclareMathOperator{\diverg}{div}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Sym}{Sym}
 
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
@@ -330,7 +331,7 @@
     de modo que $f$, vista como função complexa, não é holomorfa, pois não satisfaz as condições de 
     Cauchy-Riemann.
     %
-\paragraph{Exercício 7.}\todo{terminar}
+\paragraph{Exercício 7.}
     %
     \begin{proof}
         Dado $H\in E$, temos que
@@ -348,7 +349,49 @@
             (f'(X)\cdot H)^* = (XH^* + HX^*)^* = (XH^*)^* + (HX^*)^* = HX^* + XH^* = f'(X)\cdot H,
         \end{equation*}
         %
-        ou seja, $f'(X)\cdot H$ é simétrica para todo $H\in E$. Ademais, se $X$ é ortogonal, 
+        ou seja, $f'(X)\cdot H$ é simétrica para todo $H\in E$. Dito de outro modo, a imagem de $f'(X)$
+        é o conjunto das matrizes simétricas de ordem $n$. Resta mostrar que se $X$ é ortogonal, então
+        $f'(X)$ é sobrejetora.
+        
+        Por último, queremos mostrar que $f'(X)$ é sobrejetora para $X$ ortogonal. 
+        
+        O exposto acima nos diz que
+        %
+        \begin{equation*}
+            \Im(f'(X)) \subset \Sym(n,\R),
+        \end{equation*}
+        %
+        sendo $\Sym(n,\R)$ o conjunto das matrizes simétricas de ordem $n$. Portanto, para mostrar
+        o que queremos, basta mostrar que a dimensão de $f'(X)$ para $X$ ortogonal é igual à 
+        dimensão de $\Sym(n,\R)$.
+        
+        Em $X = I_n$ temos nossa vida facilitada, pois se $S\in\Sym(n,\R)$, então
+        %
+        \begin{equation*}
+            f'(I)\cdot (S/2) = S^*/2 + S/2 = S.
+        \end{equation*}
+        %
+        Para o caso de $X$ geral, defina
+        %
+        \begin{equation*}
+            \varphi_X: A\mapsto AX,
+        \end{equation*}
+        %
+        a multiplicação à direita por $X$. Temos $\varphi_X$ transformação linear, de modo que
+        $\varphi'_X(\cdot) = \varphi_X$. Ademais, para $X$ ortogonal,
+        %
+        \begin{equation*}
+            f(\varphi_X(A)) = AXX^*A^* = AA^* = f(A),
+        \end{equation*}
+        %
+        ou seja, $f\circ\varphi_X = f$. Portanto, para $X$ ortogonal, temos pela regra da cadeia que
+        %
+        \begin{equation*}
+            f'(I_n) = (f\circ\varphi_X)'(I_n) = f'(X)\circ\varphi_X'(I_n) = f'(X)\circ\varphi_X.
+        \end{equation*}
+        %
+        Daí, como $\varphi_X$ é bijeção (pois $X$ é invertível), segue que a dimensão da imagem de $f'(X)$ 
+        é igual à dimensão da imagem de $f'(I)$. Portanto, $\Im(f'(X)) = \Sym(n,\R)$.
     \end{proof}
     %
 \paragraph{Exercício 8.}
@@ -500,13 +543,27 @@
         e segue novamente que $f'(x) = 0$.
     \end{proof}
     %
-\paragraph{Exercício 10.}\todo{terminar}
+\paragraph{Exercício 10.}
     %
     \begin{proof}
         Esse resultado parece uma espécie de generalização do teorema de Rolle para o caso $m=1$.
         Intuitivamente, o fato da função ir para zero nos pontos de acumulação faz com que $f$ não
         possa crescer nem decrescer indefinidamente e isso implica que a derivada se anula em
         algum momento.
+        
+        Na verdade, o enunciado nos diz que $f$ pode ser estendida continuamente a 
+        $\widetilde{f}:\overline{U}\to\R$ definindo $\widetilde{f}(u) = f(u)$ para $u\in U$
+        e $f(a) = 0$ para $a\in\overline{U}\setminus U$. Como $U$ era aberto e limitado, temos
+        $\overline{U}$ fechado e limitado de $\R^m$, ou seja, um compacto.
+        Portanto, $\widetilde{f}$ assume máximo e mínimo em $\overline{U}$.
+        
+        Se ambos valores forem $0$, então $\widetilde{f}$ é constante e $f'(x) = 0, \forall x\in U$.
+        Do contrário, existe $x_0\in U$ tal que $f(x_0)$ é um extremo (máximo ou mínimo). Daí,
+        segue que as derivadas direcionais em cada direção $\vec{v}$ se anulam, pois
+        $t=0$ é ponto extremo de $t\mapsto f(x_0 + t\vec{v})$ (que é uma função diferenciável de
+        $\R$ em $\R$ e podemos usar o exercício anterior).
+        
+        Portanto, $\partial_{\vec{v}} f(x_0) = 0$ para todo $\vec{v}$, ou seja, $f'(x_0) = 0$.
     \end{proof}
     %
 \end{document}
