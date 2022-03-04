@@ -95,7 +95,7 @@
         %
     \end{proof}
     %
-\paragraph{Exercício 2.}
+\paragraph{Exercício 2.}\todo{terminar}
     %
     \begin{proof}
         Da convexidade de $U$, temos que $[a, a+h]\subset U$. Assim,
@@ -117,20 +117,92 @@
         para todo $a\in U$. Logo, $f$ é uniformemente contínua em $U$.
     \end{proof}
     %
-\paragraph{Exercício 3.}\todo{checar}
+\paragraph{Exercício 3.}
     %
     \begin{proof}
-        Segue da Proposição 5.1 (?)
+        Segue da Proposição 5.1, da continuidade de $f'$ e da compacidade de $K$:
+        pela proposição, temos que para cada $x\in K$ existe $c_x$ tal que
+        %
+        \begin{equation*}
+            |f(x+h) - f(x)| \geq c_x|h|,
+        \end{equation*}
+        %
+        para todo $|h|<\delta$. Daí, segue que
+        %
+        \begin{equation*}
+            |f'(x)| \geq c_x \geq c,
+        \end{equation*}
+        %
+        sendo
+        %
+        \begin{equation*}
+            c = \min_{x\in K} c_x,
+        \end{equation*}
+        %
+        que existe porque $f'$ é contínua e $K$ é compacto. Logo, para todo $x\in K$
+        e $|h| < \delta$, vale
+        %
+        \begin{equation*}
+            |f(x+h) - f(x)| \geq c|h|,
+        \end{equation*}
+        %
+        como queríamos mostrar.
     \end{proof}
     %
-\paragraph{Exercício 4.}
+\paragraph{Exercício 4.}\todo{terminar}
     %
     \begin{enumerate}[a)]
-        \item 
+        \item Temos
+        %
+        \begin{equation*}
+            d_U(a,b) = \inf\left\{ \sum_{i=1}^{k-1} |x_{i+1} - x_i| \right\},
+        \end{equation*}
+        %
+        sendo $x_1, \dots, x_k\in\R^m$ vértices de uma poligonal que liga
+        $a$ e $b$. Como os elementos do conjunto sobre o qual tomamos o ínfimo
+        são todos maiores ou iguais a zero, segue que $d_U(a,b) \geq 0$ para
+        todo par $(a,b)\in\R^m\times\R^m$.
         
-        \item
+        Ademais, se $a=b$ é evidente que o ínfimo é $0$, pois esse é o menor
+        valor no conjunto. Reciprocamente, se
+        $d_U(a,b) = 0$, então existe uma poligonal de comprimento nulo ligando
+        $a$ e $b$, ou seja, $a=b$.
         
-        \item
+        Por fim, $d_U$ obedece a desigualdade triangular pois...
+        
+        No caso em que $U$ é convexo, sempre existe um segmento de reta inteiramente
+        contido em $U$ que liga $a$ e $b$; pela desigualdade triangular,
+        o comprimento desse segmento, $|a-b|$, é maior ou igual ao comprimento de
+        qualquer poligonal ligando $a$ e $b$. Portanto, nesse caso temos
+        $d_U(a,b) = |a-b|$.
+        
+        Por fim, para $U$ um aberto conexo qualquer, temos do exposto acima que
+        %
+        \begin{equation*}
+            |a-b| \leq d_U(a,b),
+        \end{equation*}
+        %
+        para quaisquer $a,b\in\R^m$. Agora, para cotar $d_U(a,b)$ por cima...
+        
+        \item Pela Desigualdade do Valor Médio, temos que se existe $M > 0$
+        tal que $|f'(x)| \leq M$
+        para todo $x\in U$ então
+        %
+        \begin{equation*}
+            |f(x) - f(y)| \leq M|x-y| \leq M d_U(x,y),
+        \end{equation*}
+        %
+        onde a última desigualdade segue do item anterior.
+        
+        \item Pela Desigualdade do Valor Médio e do fato que a derivada de $f$
+        é limitada por $M$ em $V$, temos
+        %
+        \begin{equation*}
+            d_V(f(x), f(y)) \leq |x-y| \sup_{0<t<1} \{ d_V(f'(y + t(x-y)), 0) \}
+                            \leq M |x-y|,
+        \end{equation*}
+        %
+        para quaisquer $x,y\in U$.
         
         \item
     \end{enumerate}
@@ -142,17 +214,72 @@
         a norma do máximo, temos que
         %
         \begin{align*}
-            |T| \geq |T\cdot e_j| = \max_i |t_{ij}|, \forall j = 1, \dots, n.
+            |T| \geq |T\cdot e_j| = \max_i |t_{ij}|, \forall j = 1, \dots, m.
         \end{align*}
         %
         Logo,
         %
         \begin{align*}
-            |T| \geq \max_{i,j} |t_{ij}|, \forall j = 1, \dots, n.
+            |T| \geq \max_{i,j} |t_{ij}|, \forall j = 1, \dots, m,
         \end{align*}
         %
-        % mostrar a outra cota
-        % mostrar o caso de R^n com outra norma 
+        com $i = 1, \dots, n$. Por outro lado, considerando o vetor $v = (1,\dots,1)$
+        em $\R^m$ (que tem norma $1$), temos que
+        %
+        \begin{align*}
+            |T \cdot v|
+            &= \left|\begin{bmatrix}
+                \displaystyle{\sum_{j=1}^m t_{1j}} \\
+                \vdots \\
+                \displaystyle{\sum_{j=1}^m t_{nj}} \\
+            \end{bmatrix}\right| \\
+            &= \max_{1\leq i\leq n} \left| \displaystyle{\sum_{j=1}^m t_{ij}} \right| \\
+            &\leq \max_i \displaystyle{\sum_{j=1}^m |t_{ij}|} \\
+            &\leq \max_i \{m\cdot\max_j |t_{ij}|\} \\
+            &= m\max_{i,j} |t_{ij}|.
+        \end{align*}
+        %
+        Logo, como para qualquer outro vetor $u$ de norma $1$ em $\R^m$ teremos
+        $|T\cdot u| \leq |T\cdot v|$, segue que
+        %
+        \begin{equation*}
+            |T| \leq m \max_{i,j}|t_{ij}|.
+        \end{equation*}
+        %
+        Agora, se tomarmos $E = \R^m$ com a norma da soma e $F = \R^n$ com
+        a norma do máximo, teremos como antes que
+        %
+        \begin{align*}
+            |T| \geq |T\cdot e_j| = \max_i |t_{ij}|, \forall j = 1, \dots, m.
+        \end{align*}
+        %
+        mas agora, tomando $v = (1/m, \dots, 1/m)$, que é unitário em $\R^m$ 
+        com a norma da soma, teremos
+        %
+        \begin{align*}
+            |T \cdot v|
+            &= \left|\begin{bmatrix}
+                \displaystyle{\frac{1}{m}\sum_{j=1}^m t_{1j}} \\
+                \vdots \\
+                \displaystyle{\frac{1}{m}\sum_{j=1}^m t_{nj}} \\
+            \end{bmatrix}\right| \\
+            &\leq \frac{1}{m}\cdot\max_i \displaystyle{\sum_{j=1}^m |t_{ij}|} \\
+            &\leq \frac{1}{m}\cdot\max_i \{m\cdot\max_j |t_{ij}|\} \\
+            &= \max_{i,j} |t_{ij}|.
+        \end{align*}
+        %
+        Logo, argumentando como acima, segue que
+        %
+        \begin{equation*}
+            |T| \leq \max_{i,j} |t_{ij}|
+        \end{equation*}
+        %
+        e, portanto,
+        %
+        \begin{equation*}
+            T = \max_{i,j} |t_{ij}|.
+        \end{equation*}
+        %
     \end{proof}
     %
 \paragraph{Exercício 6.}
