@@ -350,7 +350,7 @@
         de modo que $F$ é contínua em $\R^2$.
     \end{proof}
     %
-\paragraph{Exercício 7.}\todo{terminar}
+\paragraph{Exercício 7.}
     %
     A princípio, o maior $U$ que podemos tomar é
     %
@@ -358,7 +358,49 @@
         U = \mathcal{Q}_1 \cup \mathcal{Q}_3,
     \end{equation*}
     %
-    ou seja, a união do primeiro e terceiro quadrantes (sem incluir os eixos).
+    ou seja, a união do primeiro e terceiro quadrantes (sem incluir os eixos). Considere a norma de matrizes $|\cdot|_1$ 
+    dada pelo máximo da soma dos
+    módulos dos elementos de cada linha. Note que
+    %
+    \begin{equation*}
+        f'(x,y) = 
+        \begin{bmatrix}
+            y/x & 1/2 \\
+            x/y & 1/2
+        \end{bmatrix},
+    \end{equation*}
+    %
+    donde temos
+    %
+    \begin{equation*}
+        |f'(x,y)|_1 = \max(|y/x| + 1/2; |x/y| + 1/2).
+    \end{equation*}
+    %
+    Supondo que $|f'(x,y)|_1 \leq 1$ e usando que $xy>0$, temos que
+    %
+    \begin{align*}
+        \begin{cases}
+            y/x &\leq 1/2 \\
+            x/y &\leq 1/2
+        \end{cases} \iff
+        2x \leq y \leq x/2.
+    \end{align*}
+    %
+    Portanto, considerando essa norma, temos que
+    %
+    \begin{equation*}
+        \| f(q) - f(p) \| \leq |q-p|_1\sup_{0<t<1}|f'(q + t(p-q))|
+                          \leq |q-p|_1,
+    \end{equation*}
+    %
+    pela desigualdade do valor médio, para todos $q,p \in U$, sendo
+    %
+    \begin{equation*}
+        U = \{ (x,y)\in\R^2 : 2x \leq y \leq x/2 \}.
+    \end{equation*}
+    %
+    Note que, como esse conjunto é convexo, temos $q + t(p-q)\in U$
+    para todo $0<t<1$ sempre que $q,p\in U$.
     %
 \paragraph{Exercício 8.}\todo{fazer}
     %
