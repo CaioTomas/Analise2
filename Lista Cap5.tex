@@ -84,7 +84,7 @@
 
 \maketitle
 
-\paragraph{Exercício 1.}\todo{terminar}
+\paragraph{Exercício 1.}
     %
     \begin{proof}
         Temos que
@@ -111,7 +111,8 @@
         %
         não existe, ou seja, $f'$ não é contínua ou, equivalentemente, $f\notin C^1$.
         Por último, observe que $f'(0) = a$ é injetiva (função constante) mas
-        $f$ não é biunívoca em vizinhança alguma da origem. De fato...
+        $f$ não é biunívoca em vizinhança alguma da origem devido à parcela com o fato de
+        $\sin(1/x)$.
     \end{proof}
     %
 \paragraph{Exercício 2.}
@@ -211,7 +212,8 @@
         $d_U(a,b) = 0$, então existe uma poligonal de comprimento nulo ligando
         $a$ e $b$, ou seja, $a=b$.
         
-        Por fim, $d_U$ obedece a desigualdade triangular pois...
+        Por fim, $d_U$ obedece a desigualdade triangular pois a norma $|\cdot|$
+        em $\R^2$ o faz.
         
         No caso em que $U$ é convexo, sempre existe um segmento de reta inteiramente
         contido em $U$ que liga $a$ e $b$; pela desigualdade triangular,
@@ -225,7 +227,11 @@
             |a-b| \leq d_U(a,b),
         \end{equation*}
         %
-        para quaisquer $a,b\in\R^m$. Agora, para cotar $d_U(a,b)$ por cima...
+        para quaisquer $a,b\in\R^m$. Agora, note que dada uma bola $B$ na métrica usual
+        centrada num ponto qualquer $a\in U$, existe uma bola $B'$ na métrica $d_U$ de centro 
+        $a$ e raio menor que $B$ e, além disso, existe uma terceira bola $B''$ de centro
+        $a$ na métrica usual contida em $B'$. Logo, $d_U$ é equivalente à métrica usual
+        para $U$ aberto conexo qualquer.
         
         \item Pela Desigualdade do Valor Médio, temos que se existe $M > 0$
         tal que $|f'(x)| \leq M$
