@@ -193,7 +193,7 @@
         como queríamos mostrar.
     \end{proof}
     %
-\paragraph{Exercício 4.}\todo{terminar}
+\paragraph{Exercício 4.}
     %
     \begin{enumerate}[a)]
         \item Temos
@@ -253,7 +253,28 @@
         %
         para quaisquer $x,y\in U$.
         
-        \item
+        \item Supondo $m>1$, temos $A$ aberto conexo.
+        Ora, em $U$ temos $|x-y| = d_U(x,y)$. Como $d_A(x,y)$ é,
+        por definição, o ínfimo dos comprimentos das poligonais
+        ligando $x$ a $y$, temos dois casos:
+        %
+        \begin{enumerate}
+            \item o segmento de reta ligando $x$ a $y$ tem
+            um ponto que pertence a $D$;
+            \item o segmento de reta ligando $x$ a $y$ não tem
+            nenhum ponto que pertence a $D$;
+        \end{enumerate}
+        %
+        No segundo caso, $|x-y| = d_A(x,y)$. No segundo caso, 
+        retirar uma quantidade enumerável de pontos de um
+        segmento de reta não muda o seu comprimento e,
+        portanto, o ínfimo se mantém o mesmo e temos também
+        $|x-y| = d_A(x,y)$ nesse caso.
+        
+        Portanto, $f$ pode ser estendida a uma aplicação 
+        uniformemente contínua $F:U\to\R^n$. Supondo ainda 
+        que $|f''(x)| \leq N$, temos que $F$ é de classe $C^1$
+        pela desigualdade do valor médio.
     \end{enumerate}
     %
 \paragraph{Exercício 5.}
@@ -408,46 +429,141 @@
     Note que, como esse conjunto é convexo, temos $q + t(p-q)\in U$
     para todo $0<t<1$ sempre que $q,p\in U$.
     %
-\paragraph{Exercício 8.}\todo{fazer}
-    %
-    a
-    %
-\paragraph{Exercício 9.}\todo{fazer}
-    %
-    a
-    %
-\paragraph{Exercício 10.}\todo{fazer}
-    %
-    a
-    %
-\paragraph{Exercício 11.}\todo{terminar}
+\paragraph{Exercício 8.}
     %
     \begin{proof}
-        Dado $\varepsilon > 0$, defina
+        Pelo Corolário 2, temos que se $f\in C^1$ então
+        %
+        \begin{align*}
+            |f(x+h) - f(x+k) - f'(x)\cdot (h-k)| \leq |h-k|\sup_{0<t<1} |f'(x+h + t(h-k)) - f'(x)|,
+        \end{align*}
+        %
+        donde segue o limite quando $(h,k)\to (0,0)$.
+        
+        Reciprocamente, suponha que existe $A(x)\in\mathcal{L}(\R^n, \R^m)$ tal que
         %
         \begin{equation*}
-            X = \{ t\in [0,1] : |f(t) - f(0)| \leq g(t) - g(0) + 
-                                              \varepsilon t + \varepsilon \}.
+            \lim_{(h,k)\to (0,0)} \frac{f(x+h) - f(x+k) - A(x)\cdot (h-k)}{|h-k|} = 0
         \end{equation*}
         %
-        Note que $0\in X$, logo $X\neq\varnothing$. Ademais, dada uma sequência
-        $(a_n)_{n\in\N}$ de pontos de $X$ que converge para $a$, temos que
+        para cada $x\in U$. Ora, então a expressão no interior do limite nada mais é que
+        o erro na aproximação de $f$ pela derivada, ou seja, $f\in C^1$.
+    \end{proof}
+    %
+\paragraph{Exercício 9.}
+    %
+    \begin{proof}
+        Para $v\in\R^m$ com norma pequena, temos pela D.V.M. que
         %
         \begin{equation*}
-            |f(a_n) - f(0)| \leq g(a_n) - g(0) + \varepsilon a_n + \varepsilon, 
-            \forall n\in\N.
+            |f(v)| \leq |v|\cdot|f'(\theta v)|, 
         \end{equation*}
         %
-        Tomando o limite e usando a diferenciabilidade de $f$ e de $g$, temos
+        para um certo $0 < \theta < 1$. Daí,
         %
         \begin{equation*}
-            |f(a) - f(0)| \leq g(a) - g(0) + \varepsilon a + \varepsilon,
+            \frac{|f(v)|}{|v|^2} \leq \frac{|v|\cdot |f'(\theta v)|}{|v|^2} = \frac{|f'(\theta v)|}{|v|}.
         \end{equation*}
         %
-        ou seja, $a\in X$ e, portanto, $X$ é fechado. Por fim, se
-        $0 < a < 1$ e $a\in X$ vamos mostrar que existe $\delta > 0$
-        tal que $a + \delta \in X$, ou seja, que $X$ é aberto.
+        Logo, basta mostrarmos que
+        %
+        \begin{equation*}
+            \lim_{v\to 0} \frac{|f'(\theta v)|}{|v|} = 0.
+        \end{equation*}
+        %
+        Para tanto, basta lembrar que $f'(\theta)h$ é diferenciável na origem e $f''(\theta v)h\equiv 0$
+        por hipótese. Logo, o erro na aproximação de $f''$ é
+        %
+        \begin{equation*}
+            r(h) = f'(\theta v)h
+        \end{equation*}
+        %
+        com
+        %
+        \begin{equation*}
+            \lim_{h\to 0} \frac{|f'(\theta v)h|}{|h|} = 0,
+        \end{equation*}
+        %
+        donde segue o resultado.
+    \end{proof}
+    %
+\paragraph{Exercício 10.}
+    %
+    \begin{proof}
+        Note que, definindo
+        %
+        \begin{equation*}
+            r(h) = f(a+h) - f(a) - f'(a)\cdot h - \frac{1}{2}f''(a)(h,h),
+        \end{equation*}
+        %
+        temos que
+        %
+        \begin{equation*}
+            r(0) = 0 = r'(0)
+        \end{equation*}
+        %
+        e também $r''(0)$. Logo, pelo Exercício 9, segue que
+        %
+        \begin{equation*}
+            \lim_{h\to 0} \frac{r(h)}{|h|^2} = 0.
+        \end{equation*}
+        %
+    \end{proof}
+    %
+\paragraph{Exercício 11.}
+    %
+    \begin{proof}
+        % Dado $\varepsilon > 0$, defina
+        % %
+        % \begin{equation*}
+        %     X = \{ t\in [0,1] : |f(t) - f(0)| \leq g(t) - g(0) + 
+        %                                       \varepsilon t + \varepsilon \}.
+        % \end{equation*}
+        % %
+        % Note que $0\in X$, logo $X\neq\varnothing$. Ademais, dada uma sequência
+        % $(a_n)_{n\in\N}$ de pontos de $X$ que converge para $a$, temos que
+        % %
+        % \begin{equation*}
+        %     |f(a_n) - f(0)| \leq g(a_n) - g(0) + \varepsilon a_n + \varepsilon, 
+        %     \forall n\in\N.
+        % \end{equation*}
+        % %
+        % Tomando o limite e usando a diferenciabilidade de $f$ e de $g$, temos
+        % %
+        % \begin{equation*}
+        %     |f(a) - f(0)| \leq g(a) - g(0) + \varepsilon a + \varepsilon,
+        % \end{equation*}
+        % %
+        % ou seja, $a\in X$ e, portanto, $X$ é fechado. Por fim, se
+        % $0 < a < 1$ e $a\in X$ vamos mostrar que existe $\delta > 0$
+        % tal que $a + \delta \in X$, ou seja, que $X$ é aberto.
         % terminar a demonstração
+        
+        Vamos resolver um exercício ligeiramente diferente, considerando que $|f'(t)| \leq g'(t)$.
+        Nesse caso, defina o funcional linear $\varphi:\R^n \to\R^n$ que manda
+        %
+        \begin{equation*}
+            \varphi(\vec{v}) = \vec{v}\cdot\frac{f(1) - f(0)}{|f(1) - f(0)|}.
+        \end{equation*}
+        %
+        Como $\varphi$ é funcional linear, segue que $(\varphi\circ f)'(t) = \varphi(f'(t))$ e,
+        portanto,
+        %
+        \begin{equation*}
+            |(\varphi\circ f)'(t)| = |\varphi(f'(t))| = |f'(t)| \leq g'(t),
+        \end{equation*}
+        %
+        donde segue que
+        %
+        \begin{align*}
+            |f(1) - f(0)| = \varphi(f(1) - f(0)) = \varphi(f(1)) - \varphi(f(0))
+                                                 &= \int_0^1 (\varphi\circ f)'(t) \, dt \\
+                                                 &\leq \int_0^1 |(\varphi\circ f)'(t)| \, dt \\
+                                                 &\leq \int_0^1 g'(t) \, dt \\
+                                                 &= g(1) - g(0),
+        \end{align*}
+        %
+        como desejado.
     \end{proof}
     %
 \end{document}
