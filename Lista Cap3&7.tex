@@ -1,0 +1,255 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{wasysym}
+\usepackage{url}
+\usepackage{float} 
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usepackage[shortlabels]{enumitem}
+\usepackage{esint}
+\usepackage{multicol}
+\usepackage{todonotes}
+
+\newtheorem{definition}{Definição}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\res}{\mathrm{res}}
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Sym}{Sym}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{\textbf{Análise 2}\\ Exercícios Cap. 3 \& 7}
+\author{Caio Tomás de Paula}
+\date{23/03/2022}
+\begin{document}
+
+\maketitle
+
+\section{Capítulo 3}
+
+\paragraph{Exercício 1.}
+%
+
+%
+\paragraph{Exercício 2.}
+%
+
+%
+\paragraph{Exercício 3.}
+%
+\begin{proof}
+    Temos que
+    %
+    \begin{equation*}
+        [f''(x,y,z)] = 
+        \begin{bmatrix}
+            6 & 0 & 2 \\
+            0 & 4 & 0 \\
+            2 & 0 & 2
+        \end{bmatrix}.
+    \end{equation*}
+    %
+    Daí, segue que
+    %
+    \begin{equation*}
+        f''(x,y,z)\cdot (h,k) = 
+        \begin{bmatrix}
+            k_1 & k_2 & k_3
+        \end{bmatrix}\cdot
+        \begin{bmatrix}
+            6 & 0 & 2 \\
+            0 & 4 & 0 \\
+            2 & 0 & 2
+        \end{bmatrix}\cdot
+        \begin{bmatrix}
+            h_1 \\
+            h_2 \\
+            h_3
+        \end{bmatrix} =
+        6h_1k_1 + 2h_3k_1 + 4h_2k_2 + 2h_1k_3 + 2h_3k_3 
+    \end{equation*}
+    %
+    e
+    %
+    \begin{equation*}
+        f''(x,y,z) \cdot (h,h) = 6h_1^2 + 4h_2^2 + 2h_3^2 + 4h_1h_3
+                               = 2h_1^2 + (2h_1 + h_3)^2 + h_3^2 + 4h_2^2 > 0
+    \end{equation*}
+    %
+    sempre que $h = (h_1, h_2, h_3) \neq 0$.
+\end{proof}
+%
+\paragraph{Exercício 4.}
+%
+Note que $f(x,y) = e^{2x}\cos(2y)$. Daí,
+%
+\begin{equation*}
+    [f'(x,y)] =
+    \begin{bmatrix}
+        2e^{2x}\cos(2y) & -2e^{2x}\sin(2y)
+    \end{bmatrix}
+\end{equation*}
+%
+e
+%
+\begin{equation*}
+    [f''(x,y)] =
+    \begin{bmatrix}
+        4e^{2x}\cos(2y) & -4e^{2x}\sin(2y) \\
+        -4e^{2x}\sin(2y) & -4e^{2x}\cos(2y)
+    \end{bmatrix} \implies
+    [f''(0,0)] =
+    \begin{bmatrix}
+        4 & 0 \\
+        0 & -4
+    \end{bmatrix} = [A].
+\end{equation*}
+%
+Portanto, 
+%
+\begin{equation*}
+    A(w,w) =
+    \begin{bmatrix}
+        w_1 & w_2
+    \end{bmatrix}\cdot
+    \begin{bmatrix}
+        4 & 0 \\
+        0 & -4
+    \end{bmatrix}\cdot
+    \begin{bmatrix}
+        w_1 \\
+        w_2
+    \end{bmatrix} =
+    4w_1^2 - 4w_2^2,
+\end{equation*}
+%
+para todo $w\in\R^2$. Logo, podemos tomar $u = (2,1)$ e $v = (1,2)$ para que $A(u,u) > 0$ e $A(v,v) < 0$.
+%
+\paragraph{Exercício 5.}
+%
+
+%
+\paragraph{Exercício 6.}
+%
+\begin{enumerate}[a)]
+    \item 
+    \item
+    \item
+\end{enumerate}
+%
+\paragraph{Exercício 7.}
+%
+\begin{proof}
+    Vamos proceder por indução em $j$. Se $j=1$, temos pela regra da cadeia que
+    %
+    \begin{equation*}
+        (T\circ f)' = T'(f)\circ f' = T\circ f',
+    \end{equation*}
+    %
+    já que $T$ é linear. Suponha, por hipótese de indução, que
+    %
+    \begin{equation*}
+        (T\circ f)^{(k)} = T\circ f^{(k)}
+    \end{equation*}
+    %
+    para um $k>1$. Então
+    %
+    \begin{equation*}
+        (T\circ f)^{(k+1)} = (T\circ f^{(k)})' = T'(f^{(k)})\circ f^{(k+1)} = T\circ f^{(k+1)}
+    \end{equation*}
+    %
+\end{proof}
+%
+\paragraph{Exercício 8.}
+%
+a
+%
+\section{Capítulo 7}
+
+\paragraph{Exercício 1.} 
+%
+
+%
+\paragraph{Exercício 2.}
+%
+\begin{enumerate}[a)]
+    \item 
+    \item
+\end{enumerate}
+%
+\paragraph{Exercício 3.}
+%
+
+%
+\paragraph{Exercício 4.} 
+%
+
+%
+\paragraph{Exercício 5.} 
+%
+
+%
+\paragraph{Exercício 6.}
+%
+
+%
+\end{document}
