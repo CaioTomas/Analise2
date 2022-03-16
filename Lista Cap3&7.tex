@@ -88,11 +88,69 @@
 
 \paragraph{Exercício 1.}
 %
-
+\begin{proof}
+    Sabemos, do livro-texto, que
+    %
+    \begin{equation*}
+        f''(x) = \sum_{i=1}^m\sum_{j=1}^m \frac{ \partial^2 f }
+        {\partial x_i \partial x_j} (x) \, dx_idx_j,
+    \end{equation*}
+    %
+    onde $x_k$ denota a $k$-ésima entrada de $x$. Daí, segue que
+    %
+    \begin{equation*}
+        f'''(x)\cdot e_i = 
+        \frac{ \partial f'' }{ \partial x_i } (x)
+        = \sum_{k=1}^m \frac{ \partial^3 f }
+        {\partial x_i \partial x_j \partial x_k} (x) \, dx_k, \, i=1,\dots,m.
+    \end{equation*}
+    %
+    Portanto,
+    %
+    \begin{equation*}
+        f'''(x) = \sum_{k=1}^m\sum_{i=1}^m\sum_{j=1}^m 
+        \frac{ \partial^3 f }
+        {\partial x_i \partial x_j \partial x_k} (x) \, dx_idx_jdx_k,
+    \end{equation*}
+    %
+    como desejado.
+\end{proof}
 %
 \paragraph{Exercício 2.}
 %
-
+Defina
+%
+\begin{equation*}
+    \varphi_i : 
+    E_1 \times \cdots \times E_{i-1} \times E_{i+1} \times \cdots \times E_p \to
+    \mathcal{L}(E,F)
+\end{equation*}
+%
+por
+%
+\begin{equation*}
+    \varphi_i(x_1, \dots, x_{i-1}, x_{i+1}, \dots, x_p) = 
+    \varphi(x_1, \dots, x_{i-1}, \cdot, x_{i+1}, \dots, x_p).
+\end{equation*}
+%
+Daí, usando a derivada de uma transformação $p$-linear, temos
+%
+\begin{align*}
+    \varphi'(x_1, \dots, x_p)\cdot(v_1, \dots, v_p) &=
+    \varphi(v_1, x_2, \dots, x_p) + \cdots + \varphi(x_1, x_2, \dots, v_p) \\
+    &= (\varphi_1\circ\pi_1)(v_1, x_2, \dots, x_p) + \cdots +
+    (\varphi_p\circ\pi_p)(x_1, x_2, \dots, v_p),
+\end{align*}
+%
+ou seja,
+%
+\begin{equation*}
+    \varphi' = \sum_{i=1}^p \varphi_i\circ\pi_i.
+\end{equation*}
+%
+Como $\varphi'$ é a soma de funções $(p-1)$-lineares, segue que $\varphi''$
+é a soma de funções $(p-2)$-lineares e assim por diante, ou seja, $\varphi^{(j)} = 0$
+para $j\geq p+1$ e $\varphi\in C^{\infty}$.
 %
 \paragraph{Exercício 3.}
 %
@@ -184,11 +242,44 @@ Portanto,
 %
 para todo $w\in\R^2$. Logo, podemos tomar $u = (2,1)$ e $v = (1,2)$ para que $A(u,u) > 0$ e $A(v,v) < 0$.
 %
-\paragraph{Exercício 5.}
+\paragraph{Exercício 5.}\todo{conferir}
 %
-
+Temos que
 %
-\paragraph{Exercício 6.}
+\begin{equation*}
+    [f'(x,y,z)] = 
+    \begin{bmatrix}
+        yz & xz & xy
+    \end{bmatrix},
+\end{equation*}
+%
+\begin{equation*}
+    [f''(x,y,z)] =
+    \begin{bmatrix}
+        0 & z & y \\
+        z & 0 & x \\
+        y & x & 0
+    \end{bmatrix}
+\end{equation*}
+%
+e também
+%
+\begin{equation*}
+    [f'''(x,y,z)] = 
+    \begin{bmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & 1 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        0 & 0 & 0 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        1 & 0 & 0 \\
+        0 & 0 & 0
+    \end{bmatrix}.
+\end{equation*}
+%
+\paragraph{Exercício 6.}\todo{fazer}
 %
 \begin{enumerate}[a)]
     \item 
@@ -219,7 +310,7 @@ para todo $w\in\R^2$. Logo, podemos tomar $u = (2,1)$ e $v = (1,2)$ para que $A(
     %
 \end{proof}
 %
-\paragraph{Exercício 8.}
+\paragraph{Exercício 8.}\todo{fazer}
 %
 a
 %
