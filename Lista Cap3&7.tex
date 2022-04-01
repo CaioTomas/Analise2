@@ -84,7 +84,7 @@
 
 \maketitle
 
-\section{Capítulo 3}
+\section*{Capítulo 3}
 
 \paragraph{Exercício 1.}
 %
@@ -242,7 +242,7 @@ Portanto,
 %
 para todo $w\in\R^2$. Logo, podemos tomar $u = (2,1)$ e $v = (1,2)$ para que $A(u,u) > 0$ e $A(v,v) < 0$.
 %
-\paragraph{Exercício 5.}\todo{conferir}
+\paragraph{Exercício 5.}
 %
 Temos que
 %
@@ -259,31 +259,46 @@ Temos que
         0 & z & y \\
         z & 0 & x \\
         y & x & 0
-    \end{bmatrix}
-\end{equation*}
-%
-e também
-% usar Ex1 aqui
-\begin{equation*}
-    [f'''(x,y,z)] = 
-    \begin{bmatrix}
-        0 & 0 & 0 \\
-        0 & 0 & 1 \\
-        0 & 1 & 0 \\
-        0 & 0 & 1 \\
-        0 & 0 & 0 \\
-        1 & 0 & 0 \\
-        0 & 1 & 0 \\
-        1 & 0 & 0 \\
-        0 & 0 & 0
     \end{bmatrix}.
 \end{equation*}
 %
-\paragraph{Exercício 6.}\todo{fazer}
+Por fim, temos
+%
+\begin{equation*}
+    D^2f(a + \vec{w}) = 
+    \begin{bmatrix}
+        0 & z & y \\
+        z & 0 & x \\
+        y & x & 0
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        0 & w_3 & w_2 \\
+        w_3 & 0 & w_1 \\
+        w_2 & w_1 & 0
+    \end{bmatrix}
+    =
+    D^2f(a) + T\cdot\vec{w} + 0,
+\end{equation*}
+%
+sendo $a = (x, y, z)$, $\vec{w} = (w_1, w_2, w_3)$ e $T: \R^3 \to \mathcal{M}(3,3)$. Logo,
+como o resto é nulo, segue que $T = D^3f(a)\vec{w}$. 
+%
+\paragraph{Exercício 6.}\todo{terminar}
 %
 \begin{enumerate}[a)]
-    \item 
-    \item
+    \item Sabemos que
+    %
+    \[
+    f'(X)\cdot H = \sum_{k=0}^4 X^{4-k} \cdot H \cdot X^k.
+    \]
+    % Não sei como generalizar :-(
+    % Procedendo analogamente, acho que teríamos
+    % %
+    % \[
+    % f''(X)\cdot(H, K) = \sum_{j=0}^3\sum_{k=0}^4 X^{4 - k - j} \cdot H \cdot L \cdot X^{k+j} 
+    % \]
+    %
     \item
 \end{enumerate}
 %
@@ -310,37 +325,192 @@ e também
     %
 \end{proof}
 %
-\paragraph{Exercício 8.}\todo{fazer}
+\paragraph{Exercício 8.}
 %
-a
+Note que
 %
-\section{Capítulo 7}
+\begin{equation*}
+    Df(x) = \frac{1}{n!} \cdot \left[ A(x, x, \dots, x) 
+                                    + \cdots 
+                                    + A(x, x, \dots, x) \right]
+          = \frac{1}{(n - 1)!}A(x, x, \dots, x)
+          = n f(x).
+\end{equation*}
+%
+Procedendo de maneira análoga, temos que
+%
+\begin{equation*}
+    D^{(j)}f(x) = \frac{n!}{(n-j)!}f(x), \, j = 0, 1, \dots, n
+\end{equation*}
+%
+e $D^{(j)}f(x) = 0$ para $j \geq n + 1$.
+%
+\section*{Capítulo 7}
 
 \paragraph{Exercício 1.} 
 %
-
+De fato: aplicando o teorema de Leibniz $k$ vezes, temos que
 %
-\paragraph{Exercício 2.}
+\begin{equation*}
+    D^{(k)}f(x) = \int_a^b \partial_1^{(k)} \varphi(x, t) \, dt.
+\end{equation*}
+%
+%
+\paragraph{Exercício 2.}\todo{fazer}
 %
 \begin{enumerate}[a)]
     \item 
     \item
+    \item 
 \end{enumerate}
 %
 \paragraph{Exercício 3.}
 %
-
+Seja $f$ uma função de duas variáveis definida em um aberto $D \subset \R^2$.
+Se as derivadas parciais $\partial_1 f$ e $\partial_2 f$ existem e são limitadas
+em $D$, então $f$ é contínua em $D$.
+%
+\begin{proof}
+    Dado $(x_0, y_0) \in D$ qualquer, existe $A \subset D$ tal que $A$ contém $(x_0, y_0)$.
+    Como $\partial _1 f$ e $\partial_2 f$ são limitadas em $D$, segue que
+    %
+    \begin{equation*}
+        M 
+        = 
+        \sup_{(x, y) \in A} |\partial_1 f(x, y)|
+        +
+        \sup_{(x, y) \in A} |\partial_2 f(x, y)| 
+        <
+        + \infty.
+    \end{equation*}
+    %
+    Portanto, segue da desigualdade do valor médio que
+    %
+    \begin{align*}
+        |f(x_0, y_0) - f(x, y)| 
+        \leq
+        |f(x_0, y_0) - f(x, y_0)|
+        +
+        |f(x, y_0) - f(x, y)|
+        \leq
+        M|x - x_0| + M|y - y_0|.
+    \end{align*}
+    %
+    Portanto, $f(x, y) \xrightarrow{(x, y) \to (x_0, y_0)} f(x_0, y_0)$, ou seja,
+    $f$ é contínua em $(x_0, y_0)$. Como esse ponto foi tomado arbitrariamente, segue que
+    $f$ é contínua em $D$.
+\end{proof}
+%
+Usando argumentos inteiramente análogos, podemos mostrar que se $f$ é uma função
+de $n$ variáveis definida num aberto $D \subset \R^n$ com derivadas parciais
+$\partial_1 f, \partial_2 f, \dots, \partial_n f$ limitadas em $D$, então $f$
+é contínua em $D$.
 %
 \paragraph{Exercício 4.} 
 %
-
+De fato: se $f\in C^{\infty}$, então é claro que todas as derivadas parciais
+mistas existem e são contínuas. Reciprocamente, se as derivadas parciais mistas
+%
+\begin{equation*}
+    \frac{\partial^k f}{\partial x^{i_1} \cdots \partial x^{i_k}}
+\end{equation*}
+%
+existem e são contínuas para todo $k$, então pelo Corolário 1 -- Cap. 7 (Elon) segue
+que $f\in C^k$ para todo $k$, ou seja, $f \in C^{\infty}$.
 %
 \paragraph{Exercício 5.} 
 %
-
+\begin{proof}
+    Seja
+    %
+    \begin{align*}
+        \Phi(x, y) = \int_a^y \varphi(x, t) \, dt, \, (x, y) \in U \times [a,b].
+    \end{align*}
+    %
+    Note que podemos escrever
+    %
+    \begin{equation*}
+        f(x) = \int_a^{\beta(x)} \varphi(x, t) \, dt - \int_a^{\alpha(x)} \varphi(x, t) \, dt
+             = \Phi(x, \beta(x)) - \Phi(x, \alpha(x)).
+    \end{equation*}
+    %
+    Pelo Teorema de Leibniz, $\Phi\in C^1$. Daí, como $\alpha, \beta \in C^1$, segue da
+    regra da cadeia que
+    %
+    \begin{equation*}
+        f'(x) = 
+        \left(
+        \frac{\partial \Phi}{\partial x}(x, \beta(x)) 
+        + \frac{\partial \Phi}{\partial y}(x, \beta(x))\beta'(x)
+        \right)
+        -
+        \left(
+        \frac{\partial \Phi}{\partial x}(x, \alpha(x)) 
+        + \frac{\partial \Phi}{\partial y}(x, \alpha(x))\alpha'(x).
+        \right)
+    \end{equation*}
+    %
+    Agora, pelo Teorema de Leibniz, temos
+    %
+    \begin{equation*}
+        \frac{\partial \Phi}{\partial x}(x, y) = \int_a^y \partial_1 \varphi(x, t) \, dt
+    \end{equation*}
+    %
+    e, pelo Teorema Fundamental do Cálculo, temos
+    %
+    \begin{equation*}
+        \frac{\partial \Phi}{\partial y}(x, y) = \varphi(x, y).
+    \end{equation*}
+    %
+    Portanto, $f\in C^1$ e temos
+    %
+    \begin{align*}
+        f'(x)
+        &=
+        \left(
+        \int_a^{\beta(x)} \partial_1 \varphi(x, t) \, dt
+        + 
+        \varphi(x, \beta(x))\beta'(x)
+        \right)
+        -
+        \left(
+        \int_a^{\alpha(x)} \partial_1 \varphi(x, t) \, dt
+        + 
+        \varphi(x, \alpha(x))\alpha'(x)
+        \right) \\
+        &=
+        \varphi(x, \beta(x))\beta'(x) 
+        - 
+        \varphi(x, \alpha(x))\alpha'(x)
+        +
+        \int_{\alpha(x)}^{\beta(x)} \partial_1 \varphi(x, t) \, dt.
+    \end{align*}
+    %
+\end{proof}
 %
 \paragraph{Exercício 6.}
 %
-
+Usando o exercício anterior e a derivada do produto interno, segue que
+%
+\begin{align*}
+    \varphi'(x)\cdot h 
+    &=
+    \left\langle
+    g'(x)\cdot h, \int_0^{|x|} f(tx) \, dt
+    \right\rangle
+    +
+    \left\langle
+    g(x), \left( \int_0^{|x|} f(tx) \, dt \right)' \cdot h
+    \right\rangle \\
+    &=
+    \left\langle
+    g'(x)\cdot h, \int_0^{|x|} f(tx) \, dt
+    \right\rangle
+    +
+    \left\langle
+    g(x), \left( f(t|x|)\cdot\frac{x}{|x|} + \int_0^{|x|} tf(tx) \, dt \right) \cdot h
+    \right\rangle.
+\end{align*}
+%
 %
 \end{document}

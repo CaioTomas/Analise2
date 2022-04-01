@@ -84,12 +84,98 @@
 
 \maketitle
 
-\paragraph{Exercício 1.}
+\paragraph{Exercício 1.}\todo{terminar}
 %
 
+% não sei provar a primeira parte ainda...
+
+Tendo mostrado que
+%
+\begin{equation*}
+    \left\langle
+    \nu'(x) \cdot h, \varphi'(x) \cdot k
+    \right\rangle
+    =
+    - \left\langle
+    \nu(x), \varphi''(x) \cdot (h, k)
+    \right\rangle,
+\end{equation*}
+%
+segue que
+%
+\begin{equation*}
+    \left\langle
+    \nu'(x) \cdot k, \varphi'(x) \cdot h
+    \right\rangle
+    =
+    - \left\langle
+    \nu(x), \varphi''(x) \cdot (k, h)
+    \right\rangle
+\end{equation*}
+%
+e, da simetria de $\varphi''$, segue que
+%
+\begin{equation*}
+    \left\langle
+    \nu'(x) \cdot h, \varphi'(x) \cdot k
+    \right\rangle
+    =
+    \left\langle
+    \nu'(x) \cdot k, \varphi'(x) \cdot h
+    \right\rangle.
+\end{equation*}
+%
+Portanto, a aplicação linear $A: E_x \to E_x$ definida por $A = \nu'(x) \cdot [\varphi'(x)]^{-1}$
+é auto-adjunta.
 %
 \paragraph{Exercício 2.}
 %
-
+Heuristicamente,
 %
+\begin{align*}
+    D^2f(a) \cdot \vec{v} \cdot \vec{w}
+    &\approx 
+    Df(a+\vec{v})\vec{w} - Df(a)\vec{w} \\
+    &\approx
+    f(a + \vec{v} + \vec{w}) - f(a + \vec{v}) - f(a + \vec{w}) + f(a) \\
+    &\approx 
+    f(a + \vec{v} + \vec{w}) - f(a + \vec{w}) - f(a + \vec{v}) + f(a) \\
+    &\approx
+    Df(a + \vec{w})\vec{v} - Df(a)\vec{v} \\
+    &\approx
+    D^2f(a) \cdot \vec{w} \cdot \vec{v}.
+\end{align*}
+%
+Mais precisamente,
+%
+\begin{align*}
+    D^2f(a) \cdot \vec{v} \cdot \vec{w}
+    &=
+    \lim_{t_1 \to 0} \frac{Df(a + \vec{v} + t_1\vec{w}) - Df(a + t_1\vec{w})}{t} \\
+    &=
+    \lim_{t_1 \to 0} \frac{1}{t_1}
+    \left[ 
+    \lim_{t_2 \to 0} \frac{f(a + t_2\vec{v} + t_1\vec{w}) - f(a + t_2\vec{v}) 
+    - f(a + t_1\vec{w}) + f(a)}{t_2}
+    \right] \\
+    &=
+    \lim_{t \to 0} 
+    \frac{f(a + t(\vec{v} + \vec{w})) - f(a + t\vec{v}) - f(a + t\vec{w}) + f(a)}{t^2}.
+\end{align*}
+%
+Daí, segue que
+%
+\begin{align*}
+    D^2f(a) \cdot \vec{w} \cdot \vec{v}
+    &=
+    \lim_{t \to 0} 
+    \frac{f(a + t(\vec{w} + \vec{v})) - f(a + t\vec{w}) - f(a + t\vec{v}) + f(a)}{t^2} \\
+    &=
+    \lim_{t \to 0} 
+    \frac{f(a + t(\vec{v} + \vec{w})) - f(a + t\vec{v}) - f(a + t\vec{w}) + f(a)}{t^2} \\
+    &=
+    D^2f(a) \cdot \vec{v} \cdot \vec{w},
+\end{align*}
+%
+como queríamos mostrar.
 \end{document}
